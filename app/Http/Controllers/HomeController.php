@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class HomeControler extends Controller
+class HomeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -14,12 +14,12 @@ class HomeControler extends Controller
         //
     }
 
-    public function index(){
-        return view('layout');
+    public function index(){ 
+        return view('admin.master');
     }
 
-    public function page(){
-        return view('page');
+    public function student_data(){
+        return view('admin.student');
     }
 
     //

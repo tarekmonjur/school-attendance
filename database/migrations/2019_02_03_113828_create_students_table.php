@@ -8,7 +8,7 @@ class CreateStudentsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * 
      * @return void
      */
     public function up()
@@ -28,7 +28,7 @@ class CreateStudentsTable extends Migration
             $table->string('section')->nullable();
             $table->string('bdate')->nullable();
             $table->string('gsm')->nullable();
-            $table->string('email')->nullable();
+            $table->string('email',100)->nullable();
             $table->string('mfee')->nullable();
             $table->string('address')->nullable();
             $table->string('paddress')->nullable();

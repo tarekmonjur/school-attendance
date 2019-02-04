@@ -11,6 +11,16 @@
 |
 */
 
-$router->get('/', 'HomeControler@index');
+$router->get('/', 'LoginController@index');
 
-$router->get('/page', 'HomeControler@page');
+
+$router->post('/login','LoginController@admin_login');
+
+
+
+
+
+$router->get('/dashboard', 'HomeController@index');
+
+$router->get('/student', 'HomeControler@student_data');
+ 
