@@ -11,10 +11,6 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
-
 $router->post('/_health', function () {
     return "tarek monjur";
 });
@@ -28,3 +24,8 @@ $router->group(['prefix' => env('APP_API_VERSION')], function () use ($router) {
     $router->get('/attendances', 'ApiController@storeAttendance');
     $router->get('/attendances[/{student_id}]', 'ApiController@storeAttendance');
 });
+
+$router->get('/', 'HomeControler@index');
+
+$router->get('/page', 'HomeControler@page');
+
