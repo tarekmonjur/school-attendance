@@ -11,16 +11,24 @@
 |
 */
 
-$router->get('/', 'LoginController@index');
+/*------------home directory*/
 
+$router->get('/', 'HomeController@index');
+
+
+/*==============for login controller*/
 
 $router->post('/login','LoginController@admin_login');
 
 
 
 
-
+ /*-==============dash board ===========*/
 $router->get('/dashboard', 'HomeController@index');
 
-$router->get('/student', 'HomeControler@student_data');
+
+/*===================student section*/
+$router->get('/student', 'HomeController@student_data');
+$router->get('/attedence', 'HomeController@attedence_chart');
+
  
