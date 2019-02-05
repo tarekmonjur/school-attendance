@@ -59,13 +59,20 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
-//     App\Http\Middleware\ExampleMiddleware::class
-// ]);
+$app->configure('session');
+$app->middleware([
+    Illuminate\Session\Middleware\StartSession::class,
+    Illuminate\View\Middleware\ShareErrorsFromSession::class
+]);
+$app->register(Illuminate\Session\SessionServiceProvider::class);
+$app->bind(Illuminate\Session\SessionManager::class, function ($app) {
+    return $app->make('session');
+});
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+    'guest' => App\Http\Middleware\RedirectIfAuthenticated::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -79,7 +86,7 @@ $app->singleton(
 */
 
 // $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+ $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
 /*

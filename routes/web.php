@@ -17,8 +17,9 @@ $router->get('/dashboard', 'HomeController@index');
 
 
 /*==============for login controller*/
-$router->get('/login','AuthController@index');
-$router->post('/login','AuthController@login');
+$router->get('/login', ['middleware' => 'guest', 'uses' => 'AuthController@index']);
+$router->post('/login', ['middleware' => 'guest', 'uses' => 'AuthController@login']);
+$router->get('/logout', ['middleware' => 'auth', 'uses' => 'AuthController@logout']);
 
 
 /*===================student section===============*/

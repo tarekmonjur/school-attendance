@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,35 +26,29 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">School Attendence System</p>
+      <p class="login-box-msg">School Attendance System</p>
+      @if(session()->has('error')) {{session()->get('error')}} @endif
 
       <form action="{{url('/login')}}" method="post">
-          
         <div class="form-group has-feedback">
-          <input type="email" class="form-control" name="email" id="email" placeholder="Email">
-          
+          <input type="email" class="form-control" name="email" value="{{old('email')}}" id="email" placeholder="Email">
+          <span class="text-danger">{{errors('email')}}</span>
         </div>
         <div class="form-group has-feedback">
           <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-          
+          <span class="text-danger">{{errors('password')}}</span>
         </div>
         <div class="row">
           <div class="col-8">
             
           </div>
-          <!-- /.col -->
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
           </div>
-          <!-- /.col -->
         </div>
       </form>
 
-      
-
-   
     </div>
-    <!-- /.login-card-body -->
   </div>
 </div>
 <!-- /.login-box -->
