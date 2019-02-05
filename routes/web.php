@@ -32,3 +32,20 @@ $router->get('/student', 'HomeController@student_data');
 $router->get('/attedence', 'HomeController@attedence_chart');
 
  
+$router->post('/_health', function () {
+    return "tarek monjur";
+});
+
+$router->get('/_health', function () {
+    return "tarek monjur";
+});
+
+$router->group(['prefix' => env('APP_API_VERSION')], function () use ($router) {
+    $router->post('/attendances', 'ApiController@storeAttendance');
+    $router->get('/attendances', 'ApiController@storeAttendance');
+    $router->get('/attendances[/{student_id}]', 'ApiController@storeAttendance');
+});
+
+$router->get('/', 'HomeControler@index');
+
+$router->get('/page', 'HomeControler@page');
