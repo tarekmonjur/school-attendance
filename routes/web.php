@@ -17,8 +17,8 @@ $router->get('/dashboard', 'HomeController@index');
 
 
 /*==============for login controller*/
-$router->get('/login','LoginController@index');
-$router->post('/login','LoginController@admin_login');
+$router->get('/login','AuthController@index');
+$router->post('/login','AuthController@login');
 
 
 /*===================student section===============*/
@@ -27,11 +27,11 @@ $router->get('/students/add', 'StudentController@create');
 
 
 $router->post('/_health', function () {
-    return "tarek monjur";
+    return "POST : tarek monjur";
 });
 
 $router->get('/_health', function () {
-    return "tarek monjur";
+    return "GET : tarek monjur";
 });
 
 $router->group(['prefix' => env('APP_API_VERSION')], function () use ($router) {
@@ -39,5 +39,4 @@ $router->group(['prefix' => env('APP_API_VERSION')], function () use ($router) {
     $router->get('/attendances', 'ApiController@storeAttendance');
     $router->get('/attendances[/{student_id}]', 'ApiController@storeAttendance');
 });
-
 
