@@ -101,26 +101,23 @@
               
               </li>
 
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
+
+            <li class="nav-item">
+              <a href="{{url('/student')}}" class="nav-link">
                 <i class="nav-icon fa fa-cogs"></i>
-                <p>
-                  Clients Manages
-                  <i class="fa fa-angle-left right"></i>
-                </p>
+                <p>Attendence Reports</p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="pages/examples/404.html" class="nav-link">
-                    <i class="fa fa-circle-o nav-icon"></i>
-                    <p>Student DataBase</p>
-                  </a>
-                </li> 
-              </ul>
-            </li> 
+           </li> 
+
+            <li class="nav-item">
+              <a href="{{url('/student')}}" class="nav-link">
+                <i class="nav-icon fa fa-cogs"></i>
+                <p>SMS Reports</p>
+              </a>
+           </li> 
 
             <li class="nav-item has-treeview">
-              <a href="" class="nav-link">
+              <a href="{{url('/student')}}" class="nav-link">
                 <i class="nav-icon fa fa-users"></i>
                 <p>
                   Students
@@ -130,8 +127,14 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{url('/student')}}" class="nav-link">
-                    <i class="fa fa-circle-o nav-icon"></i>
+                    <i class="fa fa-list nav-icon"></i>
                     <p>Student DataBase</p>
+                  </a>
+                </li> 
+                <li class="nav-item">
+                  <a href="{{url('/student')}}" class="nav-link">
+                    <i class="fa fa-user nav-icon"></i>
+                    <p>Student Add</p>
                   </a>
                 </li> 
               </ul>
@@ -168,7 +171,7 @@
     <footer class="main-footer">
       <strong>Copyright &copy; 2019 <a href="dbnltd.com">DBN LTD</a>.</strong>
       All rights reserved.
-      <div class="float-right d-none d-sm-inline-block">
+       <div class="float-right d-none d-sm-inline-block">
         <b>Version</b> 1.0.0
       </div>
     </footer>

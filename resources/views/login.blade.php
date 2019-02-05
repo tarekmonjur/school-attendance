@@ -27,25 +27,21 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">School Attendence System</p>
 
       <form action="{{url('/login')}}" method="post">
           
         <div class="form-group has-feedback">
           <input type="email" class="form-control" name="email" id="email" placeholder="Email">
-          <span class="fa fa-envelope form-control-feedback"></span>
+          
         </div>
         <div class="form-group has-feedback">
           <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-          <span class="fa fa-lock form-control-feedback"></span>
+          
         </div>
         <div class="row">
           <div class="col-8">
-            <div class="checkbox icheck">
-              <label>
-                <input type="checkbox"> Remember Me
-              </label>
-            </div>
+            
           </div>
           <!-- /.col -->
           <div class="col-4">

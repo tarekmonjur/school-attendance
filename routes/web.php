@@ -12,26 +12,20 @@
 */
 
 /*------------home directory*/
-
 $router->get('/', 'HomeController@index');
-
-
-/*==============for login controller*/
-
-$router->post('/login','LoginController@admin_login');
-
-
-
-
- /*-==============dash board ===========*/
 $router->get('/dashboard', 'HomeController@index');
 
 
-/*===================student section*/
-$router->get('/student', 'HomeController@student_data');
-$router->get('/attedence', 'HomeController@attedence_chart');
+/*==============for login controller*/
+$router->get('/login','LoginController@index');
+$router->post('/login','LoginController@admin_login');
 
- 
+
+/*===================student section===============*/
+$router->get('/students', 'StudentController@index');
+$router->get('/students/add', 'StudentController@create');
+
+
 $router->post('/_health', function () {
     return "tarek monjur";
 });
@@ -46,6 +40,4 @@ $router->group(['prefix' => env('APP_API_VERSION')], function () use ($router) {
     $router->get('/attendances[/{student_id}]', 'ApiController@storeAttendance');
 });
 
-$router->get('/', 'HomeControler@index');
 
-$router->get('/page', 'HomeControler@page');
