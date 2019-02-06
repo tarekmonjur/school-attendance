@@ -103,7 +103,7 @@
 
 
             <li class="nav-item">
-              <a href="{{url('/reports')}}" class="nav-link">
+              <a href="{{url('/attendance/daily-reports')}}" class="nav-link">
                 <i class="nav-icon fa fa-cogs"></i>
                 <p>Attendance Reports</p>
               </a>
@@ -238,9 +238,9 @@
     });
     $('#attendances-table').DataTable({
       "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": false,
       "info": true,
       "autoWidth": false
     });

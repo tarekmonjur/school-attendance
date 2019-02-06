@@ -18,4 +18,9 @@ class Student extends Model
         return Student::where('rf_id', $rfId)->first();
     }
 
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
+
 }

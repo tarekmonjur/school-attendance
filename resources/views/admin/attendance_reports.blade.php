@@ -70,7 +70,6 @@
         }
 
         #attendances-table_filter input {
-            border: none !important;
             box-shadow: none !important;
             margin-bottom: -20px;
         }
@@ -101,8 +100,8 @@
                             </div>
 
                             <h4 class="title" style="color: white;">Attendance Sheet : <strong
-                                        class="date-view">02-02-2019</strong> to
-                                <strong class="date-view">09-02-2019</strong>
+                                        class="date-view">{{$from_date}}</strong> to
+                                <strong class="date-view">{{$to_date}}</strong>
                             </h4>
 
 
@@ -118,16 +117,16 @@
                                         <div class="form-group datetimepicker-conatiner ">
                                             <label for="start_date" class="control-label">Start Date</label>
                                             <input type="text" class="form-control  datepicker" date-format="Y-m-d"
-                                                   name="start_date" id="start_date" data-provide="datepicker"
-                                                   placeholder="YYYY-MM-DD" value="">
+                                                   name="from_date" id="start_date" data-provide="datepicker"
+                                                   placeholder="YYYY-MM-DD" value="{{$from_date}}">
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-5">
                                         <div class="form-group datetimepicker-conatiner">
                                             <label for="end_date" class="control-label">End Date</label>
                                             <input type="text" class="form-control  datepicker" date-format="Y-m-d"
-                                                   name="end_date" id="end_date" data-provide="datepicker"
-                                                   placeholder="YYYY-MM-DD" value=""></div>
+                                                   name="to_date" id="end_date" data-provide="datepicker"
+                                                   placeholder="YYYY-MM-DD" value="{{$to_date}}"></div>
                                     </div>
                                 </div>
 
@@ -155,213 +154,66 @@
                     </div>
 
                     <div class="card-body">
-
+                        <?php
+                        use Carbon\Carbon;
+                        $toDate = Carbon::parse($to_date);
+                        $day =  $toDate->diffInDays(Carbon::parse($from_date));
+                        $header_from_date = $from_date;
+                        ?>
                         <table id="attendances-table" class="table table-stripped table-bordered">
                             <thead>
                             <tr id="">
                                 <th rowspan="2">Identifier</th>
                                 <th rowspan="2">Name</th>
-                                <th rowspan="2">Primary Text</th>
-                                <th rowspan="2">Secondary Text</th>
                                 <th rowspan="2">RFID</th>
-                                <th colspan="3" class="no-sort ">01-02-2019</th>
-                                <th colspan="3" class="no-sort shade">02-02-2019</th>
-                                <th colspan="3" class="no-sort ">03-02-2019</th>
+                                @for($i=0; $i<=$day; $i++)
+                                <th colspan="3" class="no-sort ">
+                                    <?php echo Carbon::parse($header_from_date)->format('M d Y (D)'); $header_from_date = Carbon::parse($header_from_date)->addDay(1); ?>
+                                </th>
+                                @endfor
                                 <th rowspan="2">Total Hour</th>
                             </tr>
                             <tr>
+                                @for($i=0; $i<=$day; $i++)
                                 <th class="no-sort ">Entry</th>
                                 <th class="no-sort ">Exit</th>
                                 <th class="no-sort ">Hour</th>
-                                <th class="no-sort shade">Entry</th>
-                                <th class="no-sort shade">Exit</th>
-                                <th class="no-sort shade">Hour</th>
-                                <th class="no-sort ">Entry</th>
-                                <th class="no-sort ">Exit</th>
-                                <th class="no-sort ">Hour</th>
+                                @endfor
                             </tr>
                             </thead>
+
                             <tbody>
+                            @foreach($students as $student)
                             <tr>
-                                <td>21008-Tasnim</td>
-                                <td></td>
-                                <td>Tasnim</td>
-                                <td>18001</td>
-                                <td>0000827670</td>
+                                <td>{{$student->sid}}</td>
+                                <td>{{$student->name}}</td>
+                                <td>{{$student->rf_id}}</td>
+                                <?php $body_from_date = $from_date; ?>
+                                @for($i=0; $i<=$day; $i++)
+                                    @forelse($student->attendances as $attendance)
+                                        <?php
+                                        $date = Carbon::parse($body_from_date)->format('Y-m-d');
+                                        $body_from_date = Carbon::parse($body_from_date)->addDay(1);
+                                        if($date == $attendance->date){
+                                        ?>
+                                            <td class="">{{$attendance->in_time}} {{$day}}</td>
+                                            <td class="">{{$attendance->out_time}}</td>
+                                            <td class="">{{$attendance->total_hour}}</td>
+                                        <?php }else {?>
+                                            <td class="">--</td>
+                                            <td class="">--</td>
+                                            <td class="">--</td>
+                                        <?php }?>
 
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="shade">--</td>
-                                <td class="shade">--</td>
-                                <td class="shade">--</td>
-                                <td class="">15:03</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
+                                    @empty
+                                        <td class="">--</td>
+                                        <td class="">--</td>
+                                        <td class="">--</td>
+                                    @endforelse
+                                @endfor
                                 <td>00:00</td>
                             </tr>
-                            <tr>
-                                <td>21008-Mahamud</td>
-                                <td></td>
-                                <td>Mahamud</td>
-                                <td>18011</td>
-                                <td>0008589455</td>
-
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="shade">09:51</td>
-                                <td class="shade">--</td>
-                                <td class="shade">--</td>
-                                <td class="">10:34</td>
-                                <td class="">19:08</td>
-                                <td class="">08:33</td>
-                                <td>08:33</td>
-                            </tr>
-                            <tr>
-                                <td>21008-Zafar</td>
-                                <td></td>
-                                <td>Abu Zafar</td>
-                                <td>18002</td>
-                                <td>0008583992</td>
-
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="shade">09:54</td>
-                                <td class="shade">--</td>
-                                <td class="shade">--</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td>00:00</td>
-                            </tr>
-                            <tr>
-                                <td>21008-18030</td>
-                                <td></td>
-                                <td>Razzak</td>
-                                <td>18030</td>
-                                <td>0008577834</td>
-
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="shade">09:47</td>
-                                <td class="shade">19:30</td>
-                                <td class="shade">09:43</td>
-                                <td class="">09:48</td>
-                                <td class="">19:08</td>
-                                <td class="">09:20</td>
-                                <td>19:03</td>
-                            </tr>
-                            <tr>
-                                <td>21008-18032</td>
-                                <td></td>
-                                <td>Abu Taleb</td>
-                                <td>18032</td>
-                                <td>0008589698</td>
-
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="shade">10:13</td>
-                                <td class="shade">--</td>
-                                <td class="shade">--</td>
-                                <td class="">09:56</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td>00:00</td>
-                            </tr>
-                            <tr>
-                                <td>21008-Hannan</td>
-                                <td></td>
-                                <td>A Hannan</td>
-                                <td>5500060</td>
-                                <td>0000825304</td>
-
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="shade">--</td>
-                                <td class="shade">--</td>
-                                <td class="shade">--</td>
-                                <td class="">09:44</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td>00:00</td>
-                            </tr>
-                            <tr>
-                                <td>21008-Saiful</td>
-                                <td></td>
-                                <td>Saiful</td>
-                                <td>5500069</td>
-                                <td>0000836104</td>
-
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="shade">10:08</td>
-                                <td class="shade">--</td>
-                                <td class="shade">--</td>
-                                <td class="">09:50</td>
-                                <td class="">19:08</td>
-                                <td class="">09:17</td>
-                                <td>09:17</td>
-                            </tr>
-                            <tr>
-                                <td>21008-18000</td>
-                                <td></td>
-                                <td>Suvo</td>
-                                <td>55000001</td>
-                                <td></td>
-
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="shade">09:48</td>
-                                <td class="shade">--</td>
-                                <td class="shade">--</td>
-                                <td class="">09:52</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td>00:00</td>
-                            </tr>
-                            <tr>
-                                <td>21016-Belal</td>
-                                <td>Belal Uddin</td>
-                                <td>Belal</td>
-                                <td>5500067</td>
-                                <td>0000839508</td>
-
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="shade">--</td>
-                                <td class="shade">--</td>
-                                <td class="shade">--</td>
-                                <td class="">15:14</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td>00:00</td>
-                            </tr>
-                            <tr>
-                                <td>21016-A Rahim</td>
-                                <td>A Rahim</td>
-                                <td>A Rahim-00</td>
-                                <td>5500091</td>
-                                <td>0000805473</td>
-
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td class="shade">--</td>
-                                <td class="shade">--</td>
-                                <td class="shade">--</td>
-                                <td class="">15:14</td>
-                                <td class="">--</td>
-                                <td class="">--</td>
-                                <td>00:01</td>
-                            </tr>
+                                @endforeach
                             </tbody>
                         </table>
 
