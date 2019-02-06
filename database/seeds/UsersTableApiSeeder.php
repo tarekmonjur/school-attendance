@@ -18,7 +18,7 @@ class UsersTableApiSeeder extends Seeder
             'full_name' => 'Api',
             'email' => 'api@gmail.com',
             'password' => 123456,
-            'user_type' => 'admin',
+            'user_type' => 'api',
             'mobile_no' => '0123456789',
             'sex' => 'male',
             'photo' => '',
