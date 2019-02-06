@@ -55,7 +55,7 @@
               <div class="dropdown-divider"></div>
              <a href="#" class="dropdown-item dropdown-footer"><span><i class="fa fa-user-o"></i></span> Profile</a>  
              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item dropdown-footer"><span><i class="fa fa-sign-out"></i></span> Logout</a>
+              <a href="{{url('/logout')}}" class="dropdown-item dropdown-footer"><span><i class="fa fa-sign-out"></i></span> Logout</a>
             </div>
           </li>    
         </ul>
