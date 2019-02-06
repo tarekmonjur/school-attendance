@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Closure;
 use Illuminate\Contracts\Auth\Factory as Auth;
 
-class Authenticate extends Controller
+class RedirectIfAuthenticated extends Controller
 {
     /**
      * The authentication guard factory instance.
@@ -36,11 +36,11 @@ class Authenticate extends Controller
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if ($this->auth->guard($guard)->guest()) {
+        if (!$this->auth->guard($guard)->guest()) {
             if ($request->header('api-token')) {
                 return $this->setJsonMessage([], 'error', 401, 'Unauthorized!', 'User Unauthorized Access!');
             }
-            return redirect('/login');
+            return redirect('/dashboard');
         }
 
         return $next($request);
