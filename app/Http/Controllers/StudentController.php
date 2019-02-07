@@ -16,12 +16,12 @@ class StudentController extends Controller
 
 
 	public function index(){
-		return view('admin.student');
+		return view('student.index');
 	}
  
 
 	public function create(){
-		return view('admin.add_student');
+		return view('student.add');
 	}
 
 	public function store(){

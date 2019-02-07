@@ -25,10 +25,10 @@ class SmsController extends Controller
     }
 
 
-    public function smsLogs()
+    public function index()
     {
         $data['sms_logs'] = SmsLog::get();
-        return view('dashboard.sms_logs')->with($data);
+        return view('sms.logs')->with($data);
     }
 
 

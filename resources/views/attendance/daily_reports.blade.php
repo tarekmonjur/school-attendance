@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title','Student Add')
+@section('title','Daily Report')
 @section('content')
 
     <style>

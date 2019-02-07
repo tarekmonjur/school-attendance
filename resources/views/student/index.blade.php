@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title','Student Database')
+@section('title','Student List')
 @section('content')
 
   <!-- Main content -->

@@ -11,22 +11,29 @@
 |
 */
 
-/*------------home directory*/
+/*------------home directory-----------*/
 $router->get('/', 'HomeController@index');
 $router->get('/dashboard', 'HomeController@index');
 
 
-/*==============for login controller*/
+/*============== Auth Route =======================*/
 $router->get('/login', ['middleware' => 'guest', 'uses' => 'AuthController@index']);
 $router->post('/login', ['middleware' => 'guest', 'uses' => 'AuthController@login']);
 $router->get('/logout', ['middleware' => 'auth', 'uses' => 'AuthController@logout']);
 
 
-/*===================student section===============*/
+/*=================== Student Route ===============*/
 $router->get('/students', 'StudentController@index');
 $router->get('/students/add', 'StudentController@create');
 
+
+/*=================== Attendance Route ===============*/
 $router->get('/attendance/daily-reports','AttendanceController@index');
+
+
+/*=================== SMS Route ===============*/
+$router->get('/sms','SmsController@index');
+$router->get('/sms/logs','SmsController@index');
 
 
 $router->post('/_health', function () {
@@ -37,9 +44,11 @@ $router->get('/_health', function () {
     return "GET : tarek monjur";
 });
 
+
+/*===================== Api Route ======================*/
 $router->group(['prefix' => env('APP_API_VERSION')], function () use ($router) {
     $router->post('/attendances', 'ApiController@storeAttendance');
-    $router->get('/attendances', 'ApiController@storeAttendance');
-    $router->get('/attendances[/{student_id}]', 'ApiController@storeAttendance');
+//    $router->get('/attendances', 'ApiController@storeAttendance');
+//    $router->get('/attendances[/{student_id}]', 'ApiController@storeAttendance');
 });
 

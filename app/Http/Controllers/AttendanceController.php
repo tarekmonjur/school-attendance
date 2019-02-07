@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Attendance;
 use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -34,7 +33,7 @@ class AttendanceController extends Controller
             $data['to_date'] = Carbon::now()->format('Y-m-d');
         }
         $data['students'] = $this->attendanceReport($data['from_date'], $data['to_date']);
-        return view('admin.attendance_reports')->with($data);
+        return view('attendance.daily_reports')->with($data);
     }
 
 

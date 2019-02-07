@@ -1,187 +1,179 @@
- 
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>DBN LTD | @yield('title')</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{url('plugins/font-awesome/css/font-awesome.min.css')}}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="{{url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{url('dist/css/adminlte.min.css')}}">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="{{url('plugins/iCheck/flat/blue.css')}}">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="{{url('plugins/morris/morris.css')}}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DBN LTD | @yield('title')</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{url('plugins/font-awesome/css/font-awesome.min.css')}}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="{{url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{url('dist/css/adminlte.min.css')}}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{{url('plugins/iCheck/flat/blue.css')}}">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="{{url('plugins/morris/morris.css')}}">
     <!-- DataTables -->
-  <link rel="stylesheet" href="{{url('../../plugins/datatables/dataTables.bootstrap4.css')}}">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="{{url('plugins/jvectormap/jquery-jvectormap-1.2.2.css')}}">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="{{url('plugins/datepicker/datepicker3.css')}}">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{url('plugins/daterangepicker/daterangepicker-bs3.css')}}">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="{{url('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{url('plugins/datatables/dataTables.bootstrap4.css')}}">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="{{url('plugins/jvectormap/jquery-jvectormap-1.2.2.css')}}">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="{{url('plugins/datepicker/datepicker3.css')}}">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{{url('plugins/daterangepicker/daterangepicker-bs3.css')}}">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="{{url('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <style>
+        .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active{color:#fff;background-color: #dd4445!important;}
+    </style>
 </head>
-    <body class="hold-transition sidebar-mini">
-    <div class="wrapper">
- 
-      <!-- Navbar -->
-      <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
-          </li>
-       </ul>
-         <!-- Right navbar links -->
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+            </li>
+        </ul>
+        <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-      
-          <!-- Notifications Dropdown Menu -->
-          <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="fa fa-user-o"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              <span class="dropdown-item dropdown-header">User Information</span>
-              <div class="dropdown-divider"></div>
-             <a href="#" class="dropdown-item dropdown-footer"><span><i class="fa fa-user-o"></i></span> Profile</a>  
-             <div class="dropdown-divider"></div>
-              <a href="{{url('/logout')}}" class="dropdown-item dropdown-footer"><span><i class="fa fa-sign-out"></i></span> Logout</a>
-            </div>
-          </li>    
+
+            <!-- Notifications Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user-o"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header">User Information</span>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item dropdown-footer"><span><i class="fa fa-user-o"></i></span> Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{{url('/logout')}}" class="dropdown-item dropdown-footer"><span><i
+                                    class="fa fa-sign-out"></i></span> Logout</a>
+                </div>
+            </li>
         </ul>
 
-      </nav>
-      <!-- /.navbar -->
+    </nav>
+    <!-- /.navbar -->
 
 
-      <!-- Main Sidebar Container -->
-      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="" class="brand-link">
-          <img src="{{url('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-               style="opacity: .8">
-          <span class="brand-text font-weight-light">DBN LTD</span>
+            <img src="{{url('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo"
+                 class="brand-image img-circle elevation-3"
+                 style="opacity: .8">
+            <span class="brand-text font-weight-light">DBN LTD</span>
         </a>
 
         <!-- Sidebar -->
         <div class="sidebar">
-          <!-- Sidebar user panel (optional) -->
-          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-              <img src="{{url('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="{{url('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">DBN LTD</a>
+                </div>
             </div>
-            <div class="info">
-              <a href="#" class="d-block">DBN LTD</a>
-            </div>
-          </div>
 
-          <!-- Sidebar Menu -->
-          <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-              <!-- Add icons to the links using the .nav-icon class
-                   with font-awesome or any other icon font library -->
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="nav-icon fa fa-dashboard"></i>
-                  <p>
-                    Dashboard
-                    
-                  </p>
-                </a>
-              
-              </li>
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    <li class="nav-item">
+                        <a href="{{url('/dashboard')}}"
+                           class="nav-link @if($url1 == '' || $url1 == 'dashboard') active @endif">
+                            <i class="nav-icon fa fa-dashboard"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
 
+                    <li class="nav-item has-treeview">
+                        <a href="{{url('/students')}}" class="nav-link @if($url1 == 'students') active @endif">
+                            <i class="nav-icon fa fa-users"></i>
+                            <p>
+                                Students
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url('/students')}}" class="nav-link">
+                                    <i class="fa fa-list nav-icon"></i>
+                                    <p>Student List</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('/students/add')}}" class="nav-link">
+                                    <i class="fa fa-user nav-icon"></i>
+                                    <p>Student Add</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-            <li class="nav-item">
-              <a href="{{url('/attendance/daily-reports')}}" class="nav-link">
-                <i class="nav-icon fa fa-cogs"></i>
-                <p>Attendance Reports</p>
-              </a>
-           </li> 
+                    <li class="nav-item">
+                        <a href="{{url('/attendance/daily-reports')}}" class="nav-link @if($url1 == 'attendance') active @endif">
+                            <i class="nav-icon fa fa-cogs"></i>
+                            <p>Attendance Reports</p>
+                        </a>
+                    </li>
 
-            <li class="nav-item">
-              <a href="{{url('/student')}}" class="nav-link">
-                <i class="nav-icon fa fa-cogs"></i>
-                <p>SMS Reports</p>
-              </a>
-           </li> 
+                    <li class="nav-item">
+                        <a href="{{url('/sms/logs')}}" class="nav-link @if($url1 == 'sms') active @endif">
+                            <i class="nav-icon fa fa-cogs"></i>
+                            <p>SMS Reports</p>
+                        </a>
+                    </li>
 
-            <li class="nav-item has-treeview">
-              <a href="{{url('/student')}}" class="nav-link">
-                <i class="nav-icon fa fa-users"></i>
-                <p>
-                  Students
-                  <i class="fa fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{url('/students')}}" class="nav-link">
-                    <i class="fa fa-list nav-icon"></i>
-                    <p>Student DataBase</p>
-                  </a>
-                </li> 
-                <li class="nav-item">
-                  <a href="{{url('/students/add')}}" class="nav-link">
-                    <i class="fa fa-user nav-icon"></i>
-                    <p>Student Add</p>
-                  </a>
-                </li> 
-              </ul>
-            </li>  
+                </ul>
 
-
-   
-          </ul>
-
-        </nav>
-        <!-- /.sidebar-menu -->
-      </div>
-      <!-- /.sidebar -->
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
     </aside>
 
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-            
+
         @yield('content')
 
     </div>
     <!-- /.content-wrapper -->
 
 
-
-
-
-
-
-
-
-
     <footer class="main-footer">
-      <strong>Copyright &copy; 2019 <a href="dbnltd.com">DBN LTD</a>.</strong>
-      All rights reserved.
-       <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 1.0.0
-      </div>
+        <strong>Copyright &copy; 2019 <a href="dbnltd.com">DBN LTD</a>.</strong>
+        All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 1.0.0
+        </div>
     </footer>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
+        <!-- Control sidebar content goes here -->
     </aside>
     <!-- /.control-sidebar -->
-  </div>
+</div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -190,7 +182,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  $.widget.bridge('uibutton', $.ui.button)
+    $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{url('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -206,9 +198,9 @@
 <script src="{{url('plugins/knob/jquery.knob.js')}}"></script>
 <!-- daterangepicker -->
 <!-- DataTables -->
-<script src="{{url('../../plugins/datatables/jquery.dataTables.js')}}"></script>
-<script src="{{url('../../plugins/datatables/dataTables.bootstrap4.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js')}}"></script>
+<script src="{{url('plugins/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{url('plugins/datatables/dataTables.bootstrap4.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
 <script src="{{url('plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- datepicker -->
 <script src="{{url('plugins/datepicker/bootstrap-datepicker.js')}}"></script>
@@ -226,25 +218,25 @@
 <script src="{{url('dist/js/demo.js')}}"></script>
 
 <script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
+    $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+        $('#attendances-table').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": false,
+            "info": true,
+            "autoWidth": false
+        });
     });
-    $('#attendances-table').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": false,
-      "info": true,
-      "autoWidth": false
-    });
-  });
 </script>
 </body>
 </html>

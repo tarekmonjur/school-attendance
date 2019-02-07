@@ -17,14 +17,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('admin.dashboard');
+        return view('dashboard');
     }
 
 
-    public function student_data()
-    {
-        return view('admin.student');
-    }
-
-    //
 }
