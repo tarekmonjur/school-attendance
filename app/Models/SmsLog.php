@@ -14,4 +14,9 @@ use Illuminate\Database\Eloquent\Model;
 class SmsLog extends Model
 {
 
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
 }

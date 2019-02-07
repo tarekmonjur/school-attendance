@@ -128,16 +128,33 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="{{url('/attendance/daily-reports')}}" class="nav-link @if($url1 == 'attendance') active @endif">
-                            <i class="nav-icon fa fa-cogs"></i>
-                            <p>Attendance Reports</p>
+                    <li class="nav-item has-treeview">
+                        <a href="{{url('/attendance')}}" class="nav-link @if($url1 == 'attendance') active @endif">
+                            <i class="nav-icon fa fa-calendar"></i>
+                            <p>
+                                Attendance
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url('/attendance/daily-reports')}}" class="nav-link">
+                                    <i class="fa fa-clock-o nav-icon"></i>
+                                    <p>Daily Reports</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('/attendance/daily-reports')}}" class="nav-link">
+                                    <i class="fa fa-calendar-check-o nav-icon"></i>
+                                    <p>Monthly Reports</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li class="nav-item">
                         <a href="{{url('/sms/logs')}}" class="nav-link @if($url1 == 'sms') active @endif">
-                            <i class="nav-icon fa fa-cogs"></i>
+                            <i class="nav-icon fa fa-envelope"></i>
                             <p>SMS Reports</p>
                         </a>
                     </li>

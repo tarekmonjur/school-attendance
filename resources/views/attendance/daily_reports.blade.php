@@ -1,7 +1,6 @@
 @extends('layout')
 @section('title','Daily Report')
 @section('content')
-
     <style>
         .card [data-background-color="red"] {
             background: linear-gradient(60deg, #ef5350, #e53935);
@@ -10,34 +9,6 @@
 
         .card [data-icon-bg-color="red"] i {
             color: #f44336;
-        }
-
-        .select2-label-fix {
-            margin-top: -12px !important;
-        }
-
-        .datetimepicker-conatiner {
-            margin-top: -10px;
-        }
-
-        .bootstrap-datetimepicker-widget a[data-action] span {
-            background-color: #ffffff;
-            color: #9c27b0;
-        }
-
-        #filter-form {
-            background: white;
-            color: black;
-            display: none;
-            margin-left: -15px;
-            margin-right: -15px;
-            padding-left: 16px;
-            padding-right: 16px;
-        }
-
-        .main-panel > .content {
-            margin-top: 40px;
-            min-height: calc(100vh - 93px);
         }
 
         #attendances-table th, #attendances-table td {
@@ -78,6 +49,7 @@
             padding-bottom: 20px;
         }
     </style>
+
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -85,9 +57,7 @@
                 <div class="card">
                     <div class="card-header" data-background-color="red">
                         <form action="">
-
                             <div class="pull-right">
-
                                 <button type="button" data-toggle="collapse" data-target="#demo"
                                         class="btn btn-danger btn-sm search-form-toggle"><i
                                             class="fa fa-search"></i>
@@ -104,15 +74,10 @@
                                 <strong class="date-view">{{$to_date}}</strong>
                             </h4>
 
-
                             <div class="clearfix"></div>
-
 
                             <div id="demo" class="collapse">
                                 <div class="row">
-                                    <div class="col-sm-12">
-                                        <h5>Search Filters</h5>
-                                    </div>
                                     <div class="col-sm-12 col-md-5">
                                         <div class="form-group datetimepicker-conatiner ">
                                             <label for="start_date" class="control-label">Start Date</label>
@@ -132,24 +97,20 @@
 
                                 <div class="row">
                                     <div class="col-sm-12">
-
                                         <div class="pull-right">
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                    id="filter-results-button"><i
+                                                        class="fa fa-search"></i> Filter
+                                            </button>
                                             <button type="button" data-toggle="collapse" data-target="#demo"
                                                     class="btn btn-danger btn-sm search-form-toggle"><i
                                                         class="fa fa fa-angle-up"></i>
                                                 Close
                                             </button>
-                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                    id="filter-results-button"><i
-                                                        class="fa fa-search"></i> Filter
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
-
                         </form>
                     </div>
 
@@ -160,7 +121,7 @@
                         $day =  $toDate->diffInDays(Carbon::parse($from_date));
                         $header_from_date = $from_date;
                         ?>
-                        <table id="attendances-table" class="table table-stripped table-bordered">
+                        <table id="attendances-table" class="table table-bordered table-responsive">
                             <thead>
                             <tr id="">
                                 <th rowspan="2">Identifier</th>

@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\SmsLog;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class SmsController extends Controller
@@ -25,9 +26,20 @@ class SmsController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $data['sms_logs'] = SmsLog::get();
+        $data = [];
+        if($request->has('from_date')){
+            $data['from_date'] = $request->input('from_date');
+        }else{
+            $data['from_date'] = Carbon::now()->subMonth(1)->format('Y-m-d');
+        }
+        if($request->has('to_date')){
+            $data['to_date'] = $request->input('to_date');
+        }else{
+            $data['to_date'] = Carbon::now()->format('Y-m-d');
+        }
+        $data['sms_logs'] = SmsLog::with('student')->get();
         return view('sms.logs')->with($data);
     }
 
