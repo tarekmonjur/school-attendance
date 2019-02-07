@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>DBN LTD | Log In Page</title>
+  <title>{{$appName}} | Log In Page</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,17 +17,25 @@
   <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style>
+    .login-box, .register-box{width: 400px!important;}
+  </style>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>DBN</b>LTD</a>
+    <a href="../../index2.html"><b>{{$appName}}</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">School Attendance System</p>
-      @if(session()->has('error')) {{session()->get('error')}} @endif
+      <p class="login-box-msg">Admin Login</p>
+
+      @if(session()->has('error'))
+        <div class="alert alert-danger">
+        {{session()->get('error')}}
+        </div>
+      @endif
 
       <form action="{{url('/login')}}" method="post">
         <div class="form-group has-feedback">

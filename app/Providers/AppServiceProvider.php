@@ -22,5 +22,6 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->share('url1', $request->segment(1));
         view()->share('url2', $request->segment(2));
+        view()->share('appName', str_replace('-',' ',env('APP_NAME')));
     }
 }
