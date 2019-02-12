@@ -16,7 +16,7 @@ class SmsLog extends Model
 
     public function student()
     {
-        return $this->hasOne(Student::class);
+        return $this->belongsTo(Student::class);
     }
 
 }
