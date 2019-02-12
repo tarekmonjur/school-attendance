@@ -57,7 +57,7 @@ class ApiController extends Controller
                 $attendance->in_time = date('H:i:s');
                 $attendance->save();
             }
-            //SmsController::sendSMS($student, $attendance);
+            SmsController::sendSMS($student, $attendance);
             return $this->setJsonMessage($student, 'success', 200, 'Success!', 'Attendance successfully saved.');
         }catch (\Exception $e){
             return $this->setJsonMessage('', 'error', 500, 'Error!', 'Something was wrong.');
