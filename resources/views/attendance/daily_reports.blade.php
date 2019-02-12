@@ -151,26 +151,26 @@
                                 <td>{{$student->rf_id}}</td>
                                 <?php $body_from_date = $from_date; ?>
                                 @for($i=0; $i<=$day; $i++)
-                                    @forelse($student->attendances as $attendance)
+                                    <?php $attend = false; ?>
+                                    @foreach($student->attendances as $attendance)
                                         <?php
                                         $date = Carbon::parse($body_from_date)->format('Y-m-d');
                                         $body_from_date = Carbon::parse($body_from_date)->addDay(1);
-                                        if($date == $attendance->date){
                                         ?>
+                                        @if($date == $attendance->date)
+                                        <?php $attend = true; ?>
                                             <td class="">{{$attendance->in_time}} {{$day}}</td>
                                             <td class="">{{$attendance->out_time}}</td>
                                             <td class="">{{$attendance->total_hour}}</td>
-                                        <?php }else {?>
-                                            <td class="">--</td>
-                                            <td class="">--</td>
-                                            <td class="">--</td>
-                                        <?php }?>
+                                        @break
+                                        @endif
+                                    @endforeach
 
-                                    @empty
+                                    @if($attend == false)
                                         <td class="">--</td>
                                         <td class="">--</td>
                                         <td class="">--</td>
-                                    @endforelse
+                                    @endif
                                 @endfor
                                 <td>00:00</td>
                             </tr>
