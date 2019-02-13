@@ -250,6 +250,10 @@
             "info": true,
             "autoWidth": false
         });
+
+        $(".datepicker").datepicker({
+            format : "yyyy-mm-dd"
+        });
     });
 </script>
 </body>

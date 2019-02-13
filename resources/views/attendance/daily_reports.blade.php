@@ -81,7 +81,7 @@
                                     <div class="col-sm-12 col-md-5">
                                         <div class="form-group datetimepicker-conatiner ">
                                             <label for="start_date" class="control-label">Start Date</label>
-                                            <input type="text" class="form-control  datepicker" date-format="Y-m-d"
+                                            <input type="text" class="form-control datepicker"
                                                    name="from_date" id="start_date" data-provide="datepicker"
                                                    placeholder="YYYY-MM-DD" value="{{$from_date}}">
                                         </div>
@@ -89,7 +89,7 @@
                                     <div class="col-sm-12 col-md-5">
                                         <div class="form-group datetimepicker-conatiner">
                                             <label for="end_date" class="control-label">End Date</label>
-                                            <input type="text" class="form-control  datepicker" date-format="Y-m-d"
+                                            <input type="text" class="form-control datepicker"
                                                    name="to_date" id="end_date" data-provide="datepicker"
                                                    placeholder="YYYY-MM-DD" value="{{$to_date}}"></div>
                                     </div>
