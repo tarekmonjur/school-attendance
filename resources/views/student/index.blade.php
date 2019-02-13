@@ -89,12 +89,16 @@
                             <tr>
                                 <th>SL</th>
                                 <th>ID</th>
-                                <th>Name</th>
                                 <th>RFID</th>
+                                <th>Roll</th>
+                                <th>Name</th>
+                                <th>F.Name</th>
+                                <th>M.Name</th>
+                                <th>Class</th>
                                 <th>Mobile</th>
-                                <th>Date</th>
-                                <th>Message</th>
-                                <th>Status</th>
+                                <th>Gender</th>
+                                <th>Address</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -103,10 +107,17 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$student->sid}}</td>
                                     <td>{{$student->rf_id}}</td>
-                                    <td>{{$student->mobile_number}}</td>
-                                    <td>{{$student->date}}</td>
-                                    <td>{{$student->body}}</td>
-                                    <td>{{$student->status}}</td>
+                                    <td>{{$student->roll}}</td>
+                                    <td>{{$student->name}}</td>
+                                    <td>{{$student->fname}}</td>
+                                    <td>{{$student->mname}}</td>
+                                    <td>{{$student->classname}}</td>
+                                    <td>{{$student->gsm}}</td>
+                                    <td>{{$student->sex}}</td>
+                                    <td>{{$student->address}}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary">Edit</button>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -114,12 +125,16 @@
                             <tr>
                                 <th>SL</th>
                                 <th>ID</th>
-                                <th>Name</th>
                                 <th>RFID</th>
+                                <th>Roll</th>
+                                <th>Name</th>
+                                <th>F.Name</th>
+                                <th>M.Name</th>
+                                <th>Class</th>
                                 <th>Mobile</th>
-                                <th>Date</th>
-                                <th>Message</th>
-                                <th>Status</th>
+                                <th>Gender</th>
+                                <th>Address</th>
+                                <th>Action</th>
                             </tr>
                             </tfoot>
                         </table>

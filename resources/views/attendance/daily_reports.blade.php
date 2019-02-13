@@ -125,7 +125,7 @@
                             <thead>
                             <tr id="">
                                 <th rowspan="2">Identifier</th>
-                                <th rowspan="2">Name</th>
+                                <th rowspan="2" style="min-width: 150px">Name</th>
                                 <th rowspan="2">RFID</th>
                                 @for($i=0; $i<=$day; $i++)
                                 <th colspan="3" class="no-sort ">
