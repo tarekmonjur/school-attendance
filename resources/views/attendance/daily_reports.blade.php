@@ -144,37 +144,42 @@
                             </thead>
 
                             <tbody>
-                            @foreach($students as $student)
-                            <tr>
-                                <td>{{$student->sid}}</td>
-                                <td>{{$student->name}}</td>
-                                <td>{{$student->rf_id}}</td>
-                                <?php $body_from_date = $from_date; ?>
-                                @for($i=0; $i<=$day; $i++)
-                                    <?php $attend = false; ?>
-                                    @foreach($student->attendances as $attendance)
-                                        <?php
-                                        $date = Carbon::parse($body_from_date)->format('Y-m-d');
-                                        $body_from_date = Carbon::parse($body_from_date)->addDay(1);
-                                        ?>
-                                        @if($date == $attendance->date)
-                                        <?php $attend = true; ?>
-                                            <td class="">{{$attendance->in_time}} {{$day}}</td>
-                                            <td class="">{{$attendance->out_time}}</td>
-                                            <td class="">{{$attendance->total_hour}}</td>
-                                        @break
-                                        @endif
-                                    @endforeach
+                            <?php
+                                foreach($students as $student) {
+                                $total_hours = 0;
+                                ?>
+                                <tr>
+                                    <td>{{$student->sid}}</td>
+                                    <td>{{$student->name}}</td>
+                                    <td>{{$student->rf_id}}</td>
+                                    <?php
+                                        $body_from_date = $from_date;
+                                        for($i=0; $i<=$day; $i++) {
+                                            $attend = false;
+                                            foreach($student->attendances as $attendance) {
+                                                $date = Carbon::parse($body_from_date)->format('Y-m-d');
+                                                $body_from_date = Carbon::parse($body_from_date)->addDay(1);
+                                                if($date == $attendance->date) {
+                                                    $attend = true; ?>
+                                                    <td class="">{{$attendance->in_time}} {{$day}}</td>
+                                                    <td class="">{{$attendance->out_time}}</td>
+                                                    <td class="">{{$attendance->total_hour}}</td>
+                                            <?php
+                                                $total_hours += $attendance->total_hour;
+                                                break;
+                                                }
+                                            }
+                                            ?>
 
-                                    @if($attend == false)
-                                        <td class="">--</td>
-                                        <td class="">--</td>
-                                        <td class="">--</td>
-                                    @endif
-                                @endfor
-                                <td>00:00</td>
-                            </tr>
-                                @endforeach
+                                            @if($attend == false)
+                                                <td class="">--</td>
+                                                <td class="">--</td>
+                                                <td class="">--</td>
+                                            @endif
+                                    <?php } ?>
+                                    <td>{{$total_hours}}</td>
+                                </tr>
+                            <?php } ?>
                             </tbody>
                         </table>
 
