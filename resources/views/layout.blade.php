@@ -141,7 +141,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{url('/attendance/daily-reports')}}" class="nav-link">
+                                <a href="{{url('/attendance/monthly-reports')}}" class="nav-link">
                                     <i class="fa fa-calendar-check-o nav-icon"></i>
                                     <p>Monthly Reports</p>
                                 </a>
@@ -253,6 +253,12 @@
 
         $(".datepicker").datepicker({
             format : "yyyy-mm-dd"
+        });
+
+        $(".datepicker-month").datepicker({
+            format : "yyyy-mm",
+            viewMode: "months",
+            minViewMode: "months",
         });
     });
 </script>

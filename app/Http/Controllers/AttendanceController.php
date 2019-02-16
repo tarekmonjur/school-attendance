@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AttendanceController extends Controller
 {
@@ -23,29 +24,70 @@ class AttendanceController extends Controller
     public function index(Request $request)
     {
         $data = [];
-        if($request->has('from_date')){
+        if ($request->has('from_date')) {
             $data['from_date'] = $request->input('from_date');
-        }else{
+        } else {
             $data['from_date'] = Carbon::now()->subMonth(1)->format('Y-m-d');
         }
-        if($request->has('to_date')){
+        if ($request->has('to_date')) {
             $data['to_date'] = $request->input('to_date');
-        }else{
+        } else {
             $data['to_date'] = Carbon::now()->format('Y-m-d');
         }
-        $data['students'] = $this->attendanceReport($data['from_date'], $data['to_date']);
+        $data['students'] = $this->dailyAttendanceReport($data['from_date'], $data['to_date']);
+
         return view('attendance.daily_reports')->with($data);
     }
 
 
-    public function attendanceReport($fromDate, $toDate)
+    protected function dailyAttendanceReport($fromDate, $toDate)
     {
         $fromDate = Carbon::parse($fromDate)->format('Y-m-d');
         $toDate = Carbon::parse($toDate)->format('Y-m-d');
-        $attendances = Student::with(['attendances' => function($q) use ($fromDate,$toDate) {
-            $q->whereBetween('date',[$fromDate,$toDate]);
-        }])->get();
+        $attendances = Student::with([
+            'attendances' => function ($q) use ($fromDate, $toDate) {
+                $q->whereBetween('date', [$fromDate, $toDate]);
+            },
+        ])->get();
+
         return $attendances;
+    }
+
+
+    protected function monthlyAttendanceReport($fromDate, $toDate)
+    {
+        $fromDate = Carbon::parse($fromDate)->format('Y-m-d');
+        $toDate = Carbon::parse($toDate)->format('Y-m-d');
+        $attendances = Student::with([
+            'attendances' => function ($q) use ($fromDate, $toDate) {
+                $q->select('student_id', DB::raw("date_format(date, '%Y-%m') as date"), DB::raw('count(date) as total'))
+                    ->whereBetween('date', [$fromDate, $toDate])
+                    ->groupBy('student_id', DB::raw("date_format(date, '%Y-%m')"));
+            },
+        ])->get();
+
+        return $attendances;
+    }
+
+
+    public function monthlyAttendance(Request $request)
+    {
+        $data = [];
+        if ($request->has('from_date')) {
+            $data['from_date'] = $request->input('from_date');
+        } else {
+            $data['from_date'] = Carbon::now()->subMonth(1)->format('Y-m');
+        }
+        $formDate = Carbon::parse($data['from_date'])->format('Y-m-d');
+        if ($request->has('to_date')) {
+            $data['to_date'] = $request->input('to_date');
+        } else {
+            $data['to_date'] = Carbon::now()->format('Y-m');
+        }
+        $toDate = Carbon::parse($data['to_date'])->addDays(Carbon::parse($data['to_date'])->daysInMonth - 1)->format('Y-m-d');
+        $data['students'] = $this->monthlyAttendanceReport($formDate, $toDate);
+//        print_r($data['students']); exit;
+        return view('attendance.monthly_reports')->with($data);
     }
 
 

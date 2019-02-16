@@ -30,7 +30,7 @@ $router->get('/students/add', 'StudentController@create');
 /*=================== Attendance Route ===============*/
 $router->get('/attendance','AttendanceController@index');
 $router->get('/attendance/daily-reports','AttendanceController@index');
-$router->get('/attendance/monthly-reports','AttendanceController@index');
+$router->get('/attendance/monthly-reports','AttendanceController@monthlyAttendance');
 
 
 /*=================== SMS Route ===============*/

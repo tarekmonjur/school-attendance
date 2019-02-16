@@ -69,7 +69,7 @@
                                 </button>
                             </div>
 
-                            <h4 class="title" style="color: white;">Daily Attendance Sheet : <strong
+                            <h4 class="title" style="color: white;">Monthly Attendance Sheet : <strong
                                         class="date-view">{{$from_date}}</strong> to
                                 <strong class="date-view">{{$to_date}}</strong>
                             </h4>
@@ -81,7 +81,7 @@
                                     <div class="col-sm-12 col-md-5">
                                         <div class="form-group datetimepicker-conatiner ">
                                             <label for="start_date" class="control-label">Start Date</label>
-                                            <input type="text" class="form-control datepicker"
+                                            <input type="text" class="form-control datepicker-month"
                                                    name="from_date" id="start_date" data-provide="datepicker"
                                                    placeholder="YYYY-MM-DD" value="{{$from_date}}">
                                         </div>
@@ -89,7 +89,7 @@
                                     <div class="col-sm-12 col-md-5">
                                         <div class="form-group datetimepicker-conatiner">
                                             <label for="end_date" class="control-label">End Date</label>
-                                            <input type="text" class="form-control datepicker"
+                                            <input type="text" class="form-control datepicker-month"
                                                    name="to_date" id="end_date" data-provide="datepicker"
                                                    placeholder="YYYY-MM-DD" value="{{$to_date}}"></div>
                                     </div>
@@ -118,68 +118,54 @@
                         <?php
                         use Carbon\Carbon;
                         $toDate = Carbon::parse($to_date);
-                        $day =  $toDate->diffInDays(Carbon::parse($from_date));
+                        $month =  $toDate->diffInMonths(Carbon::parse($from_date));
                         $header_from_date = $from_date;
                         ?>
-                        <table id="attendances-table" class="table table-bordered table-responsive">
+                        <table id="attendances-table" class="table table-bordered">
                             <thead>
-                            <tr id="">
-                                <th rowspan="2">Identifier</th>
-                                <th rowspan="2" style="min-width: 150px">Name</th>
-                                <th rowspan="2">RFID</th>
-                                @for($i=0; $i<=$day; $i++)
-                                <th colspan="3" class="no-sort ">
-                                    <?php echo Carbon::parse($header_from_date)->format('M d Y (D)'); $header_from_date = Carbon::parse($header_from_date)->addDay(1); ?>
+                            <tr>
+                                <th>SL</th>
+                                <th>Student ID</th>
+                                <th>Student Roll</th>
+                                <th style="min-width: 150px">Student Name</th>
+                                <th>RFID</th>
+                                @for($i=0; $i<=$month; $i++)
+                                <th>
+                                    <?php echo Carbon::parse($header_from_date)->format('M Y'); $header_from_date = Carbon::parse($header_from_date)->addMonth(1); ?>
                                 </th>
                                 @endfor
-                                <th rowspan="2">Total Hour</th>
-                            </tr>
-                            <tr>
-                                @for($i=0; $i<=$day; $i++)
-                                <th class="no-sort ">Entry</th>
-                                <th class="no-sort ">Exit</th>
-                                <th class="no-sort ">Hour</th>
-                                @endfor
+                                <th>Total</th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            <?php
-                                foreach($students as $student) {
-                                $total_hours = 0;
-                                ?>
-                                <tr>
-                                    <td>{{$student->sid}}</td>
-                                    <td>{{$student->name}}</td>
-                                    <td>{{$student->rf_id}}</td>
+                            @foreach($students as $student)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$student->sid}}</td>
+                                <td>{{$student->roll}}</td>
+                                <td>{{$student->name}}</td>
+                                <td>{{$student->rf_id}}</td>
+                                <?php
+                                $body_from_date = $from_date;
+                                for($i=0; $i<=$month; $i++){
+                                    $attend = false;
+                                    $date = Carbon::parse($body_from_date)->format('Y-m');
+                                    $body_from_date = Carbon::parse($body_from_date)->addMonth(1);
+                                    foreach($student->attendances as $attendance) {
+                                        if($date == $attendance->date){
+                                            $attend = true; ?>
+                                            <td>{{$attendance->total}}</td>
                                     <?php
-                                        $body_from_date = $from_date;
-                                        for($i=0; $i<=$day; $i++) {
-                                            $attend = false;
-                                            foreach($student->attendances as $attendance) {
-                                                $date = Carbon::parse($body_from_date)->format('Y-m-d');
-                                                $body_from_date = Carbon::parse($body_from_date)->addDay(1);
-                                                if($date == $attendance->date) {
-                                                    $attend = true; ?>
-                                                    <td class="">{{$attendance->in_time}} {{$day}}</td>
-                                                    <td class="">{{$attendance->out_time}}</td>
-                                                    <td class="">{{$attendance->total_hour}}</td>
-                                            <?php
-                                                $total_hours += $attendance->total_hour;
-                                                break;
-                                                }
-                                            }
-                                            ?>
-
-                                            @if($attend == false)
-                                                <td class="">--</td>
-                                                <td class="">--</td>
-                                                <td class="">--</td>
-                                            @endif
-                                    <?php } ?>
-                                    <td>{{$total_hours}}</td>
-                                </tr>
-                            <?php } ?>
+                                        break;
+                                        }
+                                    }
+                                    if($attend == false) { ?>
+                                        <td>---</td>
+                                <?php } } ?>
+                                <td>{{$student->attendances_count}}</td>
+                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
 
