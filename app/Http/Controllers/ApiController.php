@@ -41,7 +41,7 @@ class ApiController extends Controller
                 ->first();
 
             if ($attendance) {
-                $inTime = $attendance->in_time;
+                $inTime = date('H:i:s', strtotime($attendance->in_time));
                 $outTime = date('H:i:s');
                 $total_work_hour = date('H.i',strtotime($outTime) - strtotime($inTime));
                 $attendance->out_time = $outTime;
@@ -57,7 +57,7 @@ class ApiController extends Controller
                 $attendance->in_time = date('H:i:s');
                 $attendance->save();
             }
-            SmsController::sendSMS($student, $attendance);
+//            SmsController::sendSMS($student, $attendance);
             return $this->setJsonMessage($student, 'success', 200, 'Success!', 'Attendance successfully saved.');
         }catch (\Exception $e){
             return $this->setJsonMessage('', 'error', 500, 'Error!', 'Something was wrong.');

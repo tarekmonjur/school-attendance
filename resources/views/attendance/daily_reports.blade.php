@@ -156,12 +156,12 @@
                                         $body_from_date = $from_date;
                                         for($i=0; $i<=$day; $i++) {
                                             $attend = false;
+                                            $date = Carbon::parse($body_from_date)->format('Y-m-d');
+                                            $body_from_date = Carbon::parse($body_from_date)->addDay(1);
                                             foreach($student->attendances as $attendance) {
-                                                $date = Carbon::parse($body_from_date)->format('Y-m-d');
-                                                $body_from_date = Carbon::parse($body_from_date)->addDay(1);
                                                 if($date == $attendance->date) {
                                                     $attend = true; ?>
-                                                    <td class="">{{$attendance->in_time}} {{$day}}</td>
+                                                    <td class="">{{$attendance->in_time}}</td>
                                                     <td class="">{{$attendance->out_time}}</td>
                                                     <td class="">{{$attendance->total_hour}}</td>
                                             <?php
