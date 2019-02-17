@@ -147,6 +147,7 @@
                                 <td>{{$student->name}}</td>
                                 <td>{{$student->rf_id}}</td>
                                 <?php
+                                $total_attend = 0;
                                 $body_from_date = $from_date;
                                 for($i=0; $i<=$month; $i++){
                                     $attend = false;
@@ -154,16 +155,18 @@
                                     $body_from_date = Carbon::parse($body_from_date)->addMonth(1);
                                     foreach($student->attendances as $attendance) {
                                         if($date == $attendance->date){
-                                            $attend = true; ?>
+                                            $attend = true;
+                                            $total_attend += $attendance->total;
+                                            ?>
                                             <td>{{$attendance->total}}</td>
                                     <?php
                                         break;
                                         }
                                     }
                                     if($attend == false) { ?>
-                                        <td>---</td>
+                                        <td>0</td>
                                 <?php } } ?>
-                                <td>{{$student->attendances_count}}</td>
+                                <td>{{$total_attend}}</td>
                             </tr>
                             @endforeach
                             </tbody>
