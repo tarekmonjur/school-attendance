@@ -11,6 +11,17 @@
 
     <!-- Main content -->
     <section class="content">
+        @if(session()->has('success'))
+            <div class="alert alert-success">
+                {{session()->get('success')}}
+            </div>
+        @endif
+
+        @if(session()->has('error'))
+            <div class="alert alert-danger">
+                {{session()->get('error')}}
+            </div>
+        @endif
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -40,19 +51,19 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="name">Attendance In-Time SMS</label>
-                                        <select class="form-control" name="" id="">
-                                            <option value="0">Disable</option>
-                                            <option value="1">Enable</option>
+                                        <label for="in_sms">Attendance In-Time SMS</label>
+                                        <select class="form-control" name="in_sms" id="in_sms">
+                                            <option value="0" @if($settings->in_sms == 0) selected @endif >Disable</option>
+                                            <option value="1" @if($settings->in_sms == 1) selected @endif>Enable</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="roll">Attendance Out-Time SMS</label>
-                                        <select class="form-control" name="" id="">
-                                            <option value="0">Disable</option>
-                                            <option value="1">Enable</option>
+                                        <label for="out_sms">Attendance Out-Time SMS</label>
+                                        <select class="form-control" name="out_sms" id="out_sms">
+                                            <option value="0" @if($settings->out_sms == 0) selected @endif >Disable</option>
+                                            <option value="1" @if($settings->out_sms == 1) selected @endif >Enable</option>
                                         </select>
                                     </div>
                                 </div>
