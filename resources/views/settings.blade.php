@@ -1,0 +1,73 @@
+@extends('layout')
+@section('title','Settings')
+@section('content')
+    <style>
+        .card [data-background-color="red"] {
+            background: linear-gradient(60deg, #ef5350, #e53935);
+            box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(244, 67, 54, 0.4);
+            color: #ffffff
+        }
+    </style>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="red">
+                        <h3 class="card-title">Application Settings</h3>
+                    </div>
+
+                    <form role="form" method="post" action="">
+                        <div class="card-body">
+                            {{--<div class="row">--}}
+                                {{--<div class="col-6">--}}
+                                    {{--<div class="form-group bootstrap-timepicker timepicker">--}}
+                                        {{--<label for="sms_from_time">Attendance SMS From Time</label>--}}
+                                        {{--<input type="text" class="form-control datepicker-time" name="sms_from_time"--}}
+                                               {{--placeholder="Enter Attendance SMS From Time">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-6">--}}
+                                    {{--<div class="form-group bootstrap-timepicker timepicker">--}}
+                                        {{--<label for="sms_to_time">Attendance SMS To Time</label>--}}
+                                        {{--<input type="text" class="form-control datepicker-time" name="sms_to_time" id="sms_to_time"--}}
+                                               {{--placeholder="Enter Attendance SMS To Time">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="name">Attendance In-Time SMS</label>
+                                        <select class="form-control" name="" id="">
+                                            <option value="0">Disable</option>
+                                            <option value="1">Enable</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="roll">Attendance Out-Time SMS</label>
+                                        <select class="form-control" name="" id="">
+                                            <option value="0">Disable</option>
+                                            <option value="1">Enable</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" name="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+
+@endsection

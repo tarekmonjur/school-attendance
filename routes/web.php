@@ -38,6 +38,11 @@ $router->get('/sms','SmsController@index');
 $router->get('/sms/logs','SmsController@index');
 
 
+/*=================== Settings Route ===============*/
+$router->get('/settings','SettingsController@index');
+$router->post('/settings','SettingsController@store');
+
+
 $router->post('/_health', function () {
     return "POST : tarek monjur";
 });
