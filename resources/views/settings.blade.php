@@ -53,8 +53,8 @@
                                     <div class="form-group">
                                         <label for="in_sms">Attendance In-Time SMS</label>
                                         <select class="form-control" name="in_sms" id="in_sms">
-                                            <option value="0" @if($settings->in_sms == 0) selected @endif >Disable</option>
-                                            <option value="1" @if($settings->in_sms == 1) selected @endif>Enable</option>
+                                            <option value="0" @if($settings && $settings->in_sms == 0) selected @endif >Disable</option>
+                                            <option value="1" @if($settings && $settings->in_sms == 1) selected @endif>Enable</option>
                                         </select>
                                     </div>
                                 </div>
@@ -62,8 +62,8 @@
                                     <div class="form-group">
                                         <label for="out_sms">Attendance Out-Time SMS</label>
                                         <select class="form-control" name="out_sms" id="out_sms">
-                                            <option value="0" @if($settings->out_sms == 0) selected @endif >Disable</option>
-                                            <option value="1" @if($settings->out_sms == 1) selected @endif >Enable</option>
+                                            <option value="0" @if($settings && $settings->out_sms == 0) selected @endif >Disable</option>
+                                            <option value="1" @if($settings && $settings->out_sms == 1) selected @endif >Enable</option>
                                         </select>
                                     </div>
                                 </div>

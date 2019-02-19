@@ -35,16 +35,16 @@ class SettingsController extends Controller
     public function store(Request $request)
     {
         try {
-            $setings = Setting::find(1);
-            if($setings) {
-                $setings->in_sms = $request->in_sms;
-                $setings->out_sms = $request->out_sms;
-                $setings->update();
+            $settings = Setting::find(1);
+            if($settings) {
+                $settings->in_sms = $request->in_sms;
+                $settings->out_sms = $request->out_sms;
+                $settings->update();
             }else{
-                $setings = new Setting;
-                $setings->in_sms = $request->in_sms;
-                $setings->out_sms = $request->out_sms;
-                $setings->save();
+                $settings = new Setting;
+                $settings->in_sms = $request->in_sms;
+                $settings->out_sms = $request->out_sms;
+                $settings->save();
             }
             $request->session()->flash('success', 'Settings successfully saved.');
         }catch(\Exception $e){
