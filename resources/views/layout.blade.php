@@ -152,6 +152,12 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a href="{{url('/settings')}}" class="nav-link @if($url1 == 'settings') active @endif">
+                            <i class="nav-icon fa fa-cogs"></i>
+                            <p>Application Settings</p>
+                        </a>
+                    </li>
                 </ul>
 
             </nav>
