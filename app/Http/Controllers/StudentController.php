@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use Validator;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -43,16 +44,52 @@ class StudentController extends Controller
 		return view('student.add');
 	}
 
-	public function store(){
 
-	}
-	public function edit(){
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'sid' => 'required|min:3|max:50|unique:'.(new Student)->getTable(),
+            'rf_id' => 'required|min:3|max:50|unique:'.(new Student)->getTable(),
+            'name' => 'required|min:3|max:50',
+            'fname' => 'required|min:3|max:50',
+            'mname' => 'required|min:3|max:50',
+            'roll' => 'required|max:10|unique:'.(new Student)->getTable(),
+            'classname' => 'required',
+            'mobile_number' => 'required|max:11|min:11',
+        ]);
+        if ($validator->fails()) {
+            $request->session()->flash('errors', $validator->errors()->messages());
+            $request->session()->flash('old', $request->all());
+            return redirect('/students/add');
+        }
+        try {
+            $student = new Student;
+            $student->sid = $request->input('sid');
+            $student->rf_id = $request->input('rf_id');
+            $student->name = $request->input('name');
+            $student->fname = $request->input('fname');
+            $student->mname = $request->input('mname');
+            $student->sex = $request->input('sex');
+            $student->roll = $request->input('roll');
+            $student->classname = $request->input('classname');
+            $student->gsm = $request->input('mobile_number');
+            $student->bdate = $request->input('bdate');
+            $student->sex = $request->input('gender');
+            $student->address = $request->input('address');
+            $student->save();
+            $request->session()->flash('success', 'Student successfully added.');
+            return redirect('students');
+        }catch(\Exception $e){
+            $request->session()->flash('error', 'Sorry! Student not added.');
+            return redirect('students/add');
+        }
+    }
 
-	}
 
-	public function distory(){
+    public function edit()
+    {
 
-	}
+    }
 
 
 }

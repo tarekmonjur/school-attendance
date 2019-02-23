@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\Student;
+
 /**
  * Created by PhpStorm.
  * User: monjur
@@ -41,4 +44,20 @@ function errors($key)
     }
 
     return '';
+}
+
+
+function getClassName()
+{
+    return ['Play','One', 'Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten'];
+}
+
+
+function getStudentId()
+{
+    $student = Student::orderBy('id', 'desc')->first();
+    if($student){
+        return $student->sid + 1;
+    }
+    return '0000001';
 }
