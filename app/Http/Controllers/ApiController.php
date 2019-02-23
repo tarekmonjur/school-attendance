@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Setting;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -40,6 +41,8 @@ class ApiController extends Controller
                 ->where('date',$toDay)
                 ->first();
 
+            $settings = Setting::first();
+
             if ($attendance) {
                 $inTime = date('H:i:s', strtotime($attendance->in_time));
                 $outTime = date('H:i:s');
@@ -47,6 +50,9 @@ class ApiController extends Controller
                 $attendance->out_time = $outTime;
                 $attendance->total_hour = $total_work_hour;
                 $attendance->save();
+                if ($settings && $settings->out_sms == 1) {
+                    SmsController::sendSMS($student, $attendance);
+                }
             } else {
                 $attendance = new Attendance;
                 $attendance->student_id = $student->id;
@@ -56,8 +62,11 @@ class ApiController extends Controller
                 $attendance->date = date('Y-m-d');
                 $attendance->in_time = date('H:i:s');
                 $attendance->save();
+                if ($settings && $settings->in_sms == 1) {
+                    SmsController::sendSMS($student, $attendance);
+                }
             }
-//            SmsController::sendSMS($student, $attendance);
+
             return $this->setJsonMessage($student, 'success', 200, 'Success!', 'Attendance successfully saved.');
         }catch (\Exception $e){
             return $this->setJsonMessage('', 'error', 500, 'Error!', 'Something was wrong.');

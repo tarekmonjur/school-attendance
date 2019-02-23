@@ -86,7 +86,7 @@ class AttendanceController extends Controller
         }
         $toDate = Carbon::parse($data['to_date'])->addDays(Carbon::parse($data['to_date'])->daysInMonth - 1)->format('Y-m-d');
         $data['students'] = $this->monthlyAttendanceReport($formDate, $toDate);
-//        print_r($data['students']); exit;
+
         return view('attendance.monthly_reports')->with($data);
     }
 

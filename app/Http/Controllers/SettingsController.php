@@ -21,13 +21,14 @@ class SettingsController extends Controller
     public function __construct()
     {
         parent::__construct();
+        $this->middleware('auth');
     }
 
 
     public function index()
     {
         $data = [];
-        $data['settings'] = Setting::find(1);
+        $data['settings'] = Setting::first();
         return view('settings')->with($data);
     }
 
@@ -35,7 +36,7 @@ class SettingsController extends Controller
     public function store(Request $request)
     {
         try {
-            $settings = Setting::find(1);
+            $settings = Setting::first();
             if($settings) {
                 $settings->in_sms = $request->in_sms;
                 $settings->out_sms = $request->out_sms;
