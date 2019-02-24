@@ -26,6 +26,8 @@ $router->get('/logout', ['middleware' => 'auth', 'uses' => 'AuthController@logou
 $router->get('/students', 'StudentController@index');
 $router->get('/students/add', 'StudentController@create');
 $router->post('/students/add', 'StudentController@store');
+$router->get('/students/edit/{id}', 'StudentController@edit');
+$router->post('/students/edit/{id}', 'StudentController@update');
 
 
 /*=================== Attendance Route ===============*/

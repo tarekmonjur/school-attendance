@@ -70,7 +70,7 @@
                                     <td>{{$student->sex}}</td>
                                     <td>{{$student->address}}</td>
                                     <td>
-                                        <button class="btn btn-sm btn-primary">Edit</button>
+                                        <a href="{{url('/students/edit/'.$student->id)}}" class="btn btn-sm btn-primary">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach
