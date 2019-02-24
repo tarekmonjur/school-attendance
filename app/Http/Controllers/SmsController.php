@@ -39,7 +39,7 @@ class SmsController extends Controller
         }else{
             $data['to_date'] = Carbon::now()->format('Y-m-d');
         }
-        $data['sms_logs'] = SmsLog::with('student')->get();
+        $data['sms_logs'] = SmsLog::with('student')->orderBy('id','desc')->get();
         return view('sms.logs')->with($data);
     }
 
