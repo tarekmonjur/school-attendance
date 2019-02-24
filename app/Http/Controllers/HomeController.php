@@ -1,7 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Attendance;
+use App\Models\SmsLog;
+use App\Models\Student;
 use Auth;
+use Carbon\Carbon;
+
 class HomeController extends Controller
 {
     /**
@@ -18,7 +23,12 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('dashboard');
+        $data['students'] = Student::count();
+        $toDate = Carbon::now()->format('Y-m-d');
+        $data['attends'] = Attendance::where('date', $toDate)->count();
+        $data['absences'] = $data['students'] - $data['attends'];
+        $data['sms'] = SmsLog::where('date', $toDate)->count();
+        return view('dashboard')->with($data);
     }
 
 
