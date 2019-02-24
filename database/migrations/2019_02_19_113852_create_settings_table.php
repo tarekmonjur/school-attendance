@@ -17,6 +17,7 @@ class CreateSettingsTable extends Migration
             $table->increments('id');
             $table->tinyInteger('in_sms')->default(0);
             $table->tinyInteger('out_sms')->default(0);
+            $table->decimal('sms_duration',4,2)->default(0);
             $table->timestamps();
         });
     }

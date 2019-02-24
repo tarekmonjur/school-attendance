@@ -69,6 +69,21 @@
                                 </div>
                             </div>
 
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="sms_duration">Attendance SMS Duration</label>
+                                        <select class="form-control" name="sms_duration" id="sms_duration">
+                                            <option value="0.15" @if($settings && $settings->sms_duration == 0.15) selected @endif >15 minute</option>
+                                            <option value="0.5" @if($settings && $settings->sms_duration == 0.5) selected @endif >30 minute</option>
+                                            <option value="1" @if($settings && $settings->sms_duration == 0.5) selected @endif >1 hour</option>
+                                            <option value="1.5" @if($settings && $settings->sms_duration == 0.5) selected @endif >1 hour 30 minute</option>
+                                            <option value="2" @if($settings && $settings->sms_duration == 0.5) selected @endif >2 hour</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="card-footer">

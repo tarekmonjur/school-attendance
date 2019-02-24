@@ -40,11 +40,13 @@ class SettingsController extends Controller
             if($settings) {
                 $settings->in_sms = $request->in_sms;
                 $settings->out_sms = $request->out_sms;
+                $settings->sms_duration = $request->sms_duration;
                 $settings->update();
             }else{
                 $settings = new Setting;
                 $settings->in_sms = $request->in_sms;
                 $settings->out_sms = $request->out_sms;
+                $settings->sms_duration = $request->sms_duration;
                 $settings->save();
             }
             $request->session()->flash('success', 'Settings successfully saved.');
