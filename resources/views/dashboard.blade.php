@@ -47,7 +47,7 @@
               <div class="small-box bg-success">
                 <div class="inner">
                   <h3>{{$attends}}</h3>
-                  <p>Attends</p>
+                  <p>Today Total Attendances</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
@@ -61,7 +61,7 @@
               <div class="small-box bg-warning">
                 <div class="inner">
                   <h3>{{$absences}}</h3>
-                  <p>Absences</p>
+                  <p>Today Total Absences</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
@@ -75,7 +75,7 @@
               <div class="small-box bg-danger">
                 <div class="inner">
                   <h3>{{$sms}}</h3>
-                  <p>SMS</p>
+                  <p>Today Total SMS</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-pie-graph"></i>

@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 use App\Models\Attendance;
 use App\Models\Setting;
 use App\Models\Student;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -46,11 +47,15 @@ class ApiController extends Controller
             if ($attendance) {
                 $inTime = date('H:i:s', strtotime($attendance->in_time));
                 $outTime = date('H:i:s');
-                $total_work_hour = date('H.i',strtotime($outTime) - strtotime($inTime));
+                $outTimeCarbon = Carbon::parse($outTime);
+                $total_work_hour = $outTimeCarbon->diffInHours($inTime).'.'.$outTimeCarbon->diffInMinutes($inTime);
+                $smsDurationMinutes = $outTimeCarbon->diffInRealMinutes($attendance->out_time);
+                $smsDuration = $outTimeCarbon->diffInHours($attendance->out_time).'.'.(($smsDurationMinutes > 9)?$smsDurationMinutes:'0'.$smsDurationMinutes);
+
                 $attendance->out_time = $outTime;
                 $attendance->total_hour = $total_work_hour;
                 $attendance->save();
-                if ($settings && $settings->out_sms == 1) {
+                if ($settings && $settings->out_sms == 1 && $smsDuration > $settings->sms_duration) {
                     SmsController::sendSMS($student, $attendance);
                 }
             } else {
