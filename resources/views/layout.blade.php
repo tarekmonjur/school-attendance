@@ -248,6 +248,16 @@
         });
 
         $(".datepicker-time").timepicker();
+
+        $(document).on('click', '.export', function(e){
+            e.preventDefault();
+            var mywindow = window.open('', 'printwindow');
+            mywindow.document.write('<html><head><title>Pay Slip</title><link rel="stylesheet" type="text/css" href="/css/hrms.css" />');
+            mywindow.document.write('</head><body>');
+            mywindow.document.write(document.getElementById('attendances-table').innerHTML);
+            mywindow.document.write('</body></html>');
+            mywindow.print();
+        })
     });
 </script>
 </body>

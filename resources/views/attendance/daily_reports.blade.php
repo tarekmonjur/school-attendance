@@ -64,7 +64,7 @@
                                     Filter Results
                                 </button>
 
-                                <button type="submit" class="btn btn-danger btn-sm" name="action" value="export">
+                                <button class="btn btn-danger btn-sm export">
                                     <i class="fa fa-download"> </i> Export
                                 </button>
                             </div>
