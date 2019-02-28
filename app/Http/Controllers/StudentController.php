@@ -99,7 +99,7 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'sid' => 'required|min:3|max:50|unique:'.(new Student)->getTable().',id',
+            'sid' => 'required|min:3|max:50|unique:'.(new Student)->getTable().',sid,'.$id,
             'rf_id' => 'required|min:3|max:50|unique:'.(new Student)->getTable().',rf_id,'.$id,
             'name' => 'required|min:3|max:50',
             'fname' => 'required|min:3|max:50',
