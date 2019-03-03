@@ -27,7 +27,8 @@ class AttendanceController extends Controller
         if ($request->has('from_date')) {
             $data['from_date'] = $request->input('from_date');
         } else {
-            $data['from_date'] = Carbon::now()->subMonth(1)->format('Y-m-d');
+            $data['from_date'] = Carbon::now()->startOfMonth()->format('Y-m-d');
+
         }
         if ($request->has('to_date')) {
             $data['to_date'] = $request->input('to_date');

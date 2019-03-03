@@ -132,7 +132,7 @@
                                     <?php echo Carbon::parse($header_from_date)->format('M d Y (D)'); $header_from_date = Carbon::parse($header_from_date)->addDay(1); ?>
                                 </th>
                                 @endfor
-                                <th rowspan="2">Total Hour</th>
+                                <th rowspan="2" style="border-right: 1px solid #ddd !important">Total Hour</th>
                             </tr>
                             <tr>
                                 @for($i=0; $i<=$day; $i++)
@@ -177,7 +177,7 @@
                                                 <td class="">--</td>
                                             @endif
                                     <?php } ?>
-                                    <td>{{$total_hours}}</td>
+                                    <td style="border-right: 1px solid #ddd !important">{{$total_hours}}</td>
                                 </tr>
                             <?php } ?>
                             </tbody>
