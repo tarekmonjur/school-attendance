@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    protected $table = "student";
 
     public static function findStudent($deviceId, $rfId)
     {

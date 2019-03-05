@@ -102,7 +102,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$log->sid}}</td>
-                                    <td>{{$log->student->name}}</td>
+                                    <td>@if($log->student){{$log->student->name}}@endif</td>
                                     <td>{{$log->rf_id}}</td>
                                     <td>{{$log->mobile_number}}</td>
                                     <td>{{$log->date}}</td>
