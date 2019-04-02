@@ -62,7 +62,8 @@ $app->singleton(
 $app->configure('session');
 $app->middleware([
     Illuminate\Session\Middleware\StartSession::class,
-    Illuminate\View\Middleware\ShareErrorsFromSession::class
+    Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    App\Http\Middleware\CorsMiddleware::class
 ]);
 $app->register(Illuminate\Session\SessionServiceProvider::class);
 $app->bind(Illuminate\Session\SessionManager::class, function ($app) {
@@ -71,7 +72,7 @@ $app->bind(Illuminate\Session\SessionManager::class, function ($app) {
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
-    'guest' => App\Http\Middleware\RedirectIfAuthenticated::class,
+    'guest' => App\Http\Middleware\RedirectIfAuthenticated::class
 ]);
 
 /*

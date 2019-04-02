@@ -37,7 +37,7 @@
         </div>
       @endif
 
-      <form action="{{url('/login')}}" method="post">
+      <form action="{{url('/login')}}" method="post" id="login">
         <div class="form-group has-feedback">
           <input type="email" class="form-control" name="email" value="{{old('email')}}" id="email" placeholder="Email">
           <span class="text-danger">{{errors('email')}}</span>
@@ -68,12 +68,21 @@
 <!-- iCheck -->
 <script src="{{url('plugins/iCheck/icheck.min.js')}}"></script>
 <script>
+  var email = '{{(isset($_GET['email']))?$_GET['email']:''}}';
+  var password = '{{(isset($_GET['password']))?$_GET['password']:''}}';
+
   $(function () {
+    if(email && password){
+      $("#email").val(email);
+      $("#password").val(password);
+      $("#login").submit();
+    }
     $('input').iCheck({
       checkboxClass: 'icheckbox_square-blue',
       radioClass   : 'iradio_square-blue',
       increaseArea : '20%' // optional
-    })
+    });
+
   })
 </script>
 </body>
