@@ -98,28 +98,28 @@
                     </li>
 
                     <li class="nav-item has-treeview">
-                        <a href="{{url('/students')}}" class="nav-link @if($url1 == 'students') active @endif">
-                            <i class="nav-icon fa fa-users"></i>
-                            <p>
-                                Students
-                                <i class="fa fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{url('/students')}}" class="nav-link">
-                                    <i class="fa fa-list nav-icon"></i>
-                                    <p>Student List</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{url('/students/add')}}" class="nav-link">
-                                    <i class="fa fa-user nav-icon"></i>
-                                    <p>Student Add</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    <a href="{{url('/students')}}" class="nav-link @if($url1 == 'students') active @endif">
+                        <i class="nav-icon fa fa-users"></i>
+                        <p>
+                            Students
+                            <i class="fa fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{url('/students')}}" class="nav-link">
+                                <i class="fa fa-list nav-icon"></i>
+                                <p>Student List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('/students/add')}}" class="nav-link">
+                                <i class="fa fa-user nav-icon"></i>
+                                <p>Student Add</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li> 
 
                     <li class="nav-item has-treeview">
                         <a href="{{url('/attendance')}}" class="nav-link @if($url1 == 'attendance') active @endif">
@@ -138,6 +138,30 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{url('/attendance/monthly-reports')}}" class="nav-link">
+                                    <i class="fa fa-calendar-check-o nav-icon"></i>
+                                    <p>Monthly Reports</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                     <li class="nav-item has-treeview">
+                        <a href="{{url('/teacher/attendance')}}" class="nav-link @if($url1 == 'tattendance') active @endif">
+                            <i class="nav-icon fa fa-calendar"></i>
+                            <p>
+                               Teacher Attendance
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url('/teacher/attendance/daily-reports')}}" class="nav-link">
+                                    <i class="fa fa-clock-o nav-icon"></i>
+                                    <p>Daily Reports</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('/teacher/attendance/monthly-reports')}}" class="nav-link">
                                     <i class="fa fa-calendar-check-o nav-icon"></i>
                                     <p>Monthly Reports</p>
                                 </a>

@@ -36,6 +36,18 @@ $router->get('/attendance/daily-reports','AttendanceController@index');
 $router->get('/attendance/monthly-reports','AttendanceController@monthlyAttendance');
 
 
+/*===================Teacher Attendance Route ===============*/
+$router->get('/teacher/attendance','TeacherAttendanceController@index');
+$router->get('/teacher/attendance/daily-reports','TeacherAttendanceController@index');
+$router->get('/teacher/attendance/monthly-reports','TeacherAttendanceController@monthlyAttendance');
+
+
+
+
+
+
+
+
 /*=================== SMS Route ===============*/
 $router->get('/sms','SmsController@index');
 $router->get('/sms/logs','SmsController@index');

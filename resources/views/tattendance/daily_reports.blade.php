@@ -69,10 +69,7 @@
                                 </button>
                             </div>
 
-                            <h4 class="title" style="color: white;">Daily Attendance Sheet :
-                            <strong>{{ $class_name }}</strong>
-                            <strong>{{ $class_section }}</strong>
-                             <strong
+                            <h4 class="title" style="color: white;">Daily Attendance Sheet : <strong
                                         class="date-view">{{$from_date}}</strong> to
                                 <strong class="date-view">{{$to_date}}</strong>
                             </h4>
@@ -81,31 +78,7 @@
 
                             <div id="demo" class="collapse">
                                 <div class="row">
-                                    <div class="col-sm-12 col-md-3">
-                                        <div class="form-group datetimepicker-conatiner ">
-                                            <label for="start_date" class="control-label">Class </label>
-                                             <select name="class_name" id="" class="form-control">
-                                                 @foreach($classes as $value)
-
-                                                    <option value="{{ $value->id }}">{{ $value->classname }}</option>
-
-                                                 @endforeach
-                                             </select>
-                                        </div>
-                                    </div>
-                                     <div class="col-sm-12 col-md-3">
-                                        <div class="form-group datetimepicker-conatiner ">
-                                            <label for="start_date" class="control-label">Section</label>
-                                            <select name="class_section" id="" class="form-control">
-                                                 @foreach($sectiones as $ses_value)
-
-                                                    <option value="{{ $ses_value->secid }}">{{ $ses_value->section }}</option>
-
-                                                 @endforeach
-                                             </select>
-                                        </div>
-                                    </div>  
-                                     <div class="col-sm-12 col-md-3">
+                                    <div class="col-sm-12 col-md-5">
                                         <div class="form-group datetimepicker-conatiner ">
                                             <label for="start_date" class="control-label">Start Date</label>
                                             <input type="text" class="form-control datepicker"
@@ -113,7 +86,7 @@
                                                    placeholder="YYYY-MM-DD" value="{{$from_date}}">
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 col-md-3">
+                                    <div class="col-sm-12 col-md-5">
                                         <div class="form-group datetimepicker-conatiner">
                                             <label for="end_date" class="control-label">End Date</label>
                                             <input type="text" class="form-control datepicker"
@@ -172,20 +145,20 @@
 
                             <tbody>
                             <?php
-                                foreach($students as $student) {
+                                foreach($teachers as $teacher) {
                                 $total_hours = 0;
                                 ?>
                                 <tr>
-                                    <td>{{$student->sid}}</td>
-                                    <td>{{$student->name}}</td>
-                                    <td>{{$student->rf_id}}</td>
+                                    <td>{{$teacher->em_id}}</td>
+                                    <td>{{$teacher->name}}</td>
+                                    <td>{{$teacher->rf_id}}</td>
                                     <?php
                                         $body_from_date = $from_date;
                                         for($i=0; $i<=$day; $i++) {
                                             $attend = false;
                                             $date = Carbon::parse($body_from_date)->format('Y-m-d');
                                             $body_from_date = Carbon::parse($body_from_date)->addDay(1);
-                                            foreach($student->attendances as $attendance) {
+                                            foreach($teacher->teacher_attendances as $attendance) {
                                                 if($date == $attendance->date) {
                                                     $attend = true; ?>
                                                     <td class="">{{$attendance->in_time}}</td>
