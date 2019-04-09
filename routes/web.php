@@ -26,6 +26,7 @@ $router->get('/logout', ['middleware' => 'auth', 'uses' => 'AuthController@logou
 $router->get('/students', 'StudentController@index');
 $router->get('/students/add', 'StudentController@create');
 $router->post('/students/add', 'StudentController@store');
+$router->post('/students/{id}', 'StudentController@save');
 $router->get('/students/edit/{id}', 'StudentController@edit');
 $router->post('/students/edit/{id}', 'StudentController@update');
 

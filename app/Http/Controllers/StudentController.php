@@ -137,4 +137,20 @@ class StudentController extends Controller
     }
 
 
+    public function save(Request $request, $id)
+    {
+        $student = Student::find($id);
+        if (!$student) {
+            return $this->setJsonMessage('', 'error', 500, 'Error!', 'Student not found.');
+        }
+        try {
+            $student->sid = $request->input('sid');
+            $student->rf_id = $request->input('rf_id');
+            $student->save();
+            return $this->setJsonMessage('', 'success', 200, 'Success!', 'Student successfully saved.');
+        }catch(\Exception $e) {
+            return $this->setJsonMessage('', 'error', 500, 'Error!', 'Something was wrong.');
+        }
+    }
+
 }

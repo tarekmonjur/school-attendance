@@ -42,8 +42,8 @@
                             <thead>
                             <tr>
                                 <th>SL</th>
-                                <th>ID</th>
-                                <th>RFID</th>
+                                <th width="200px">ID</th>
+                                <th width="200px">RFID</th>
                                 <th>Roll</th>
                                 <th>Name</th>
                                 <th>F.Name</th>
@@ -59,8 +59,12 @@
                             @foreach($students as $student)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$student->sid}}</td>
-                                    <td>{{$student->rf_id}}</td>
+                                    <td>
+                                        <input type="text" id="sid_{{$student->id}}" value="{{$student->sid}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" id="rf_id_{{$student->id}}" value="{{$student->rf_id}}">
+                                    </td>
                                     <td>{{$student->roll}}</td>
                                     <td>{{$student->name}}</td>
                                     <td>{{$student->fname}}</td>
@@ -70,6 +74,7 @@
                                     <td>{{$student->sex}}</td>
                                     <td>{{$student->address}}</td>
                                     <td>
+                                        <a href="javascript:void(0)" onclick="saveStudent({{$student->id}})" class="btn btn-sm btn-success">Save</a>
                                         <a href="{{url('/students/edit/'.$student->id)}}" class="btn btn-sm btn-primary">Edit</a>
                                     </td>
                                 </tr>
@@ -104,3 +109,28 @@
     <!-- /.content -->
 
 @endsection
+
+
+@push('scripts')
+    <script type="text/javascript">
+        function saveStudent(id) {
+            var sid = document.getElementById('sid_'+id).value;
+            var rfid = document.getElementById('rf_id_'+id).value;
+            $.ajax({
+               url: baseUrl+'/students/'+id,
+               type: 'POST',
+               dataType: 'json',
+               data: {sid: sid, rf_id: rfid},
+               success: function(data){
+                   if(data.status == 'error') {
+                       $.notify(data.message, {style: 'bootstrap', className: 'error'});
+                   }else if(data.status == 'success') {
+                       $.notify(data.message, {style: 'bootstrap', className: 'success'});
+                   }
+               },error: function (data) {
+                    $.notify(data.message, {style: 'bootstrap', className: 'error'});
+               }
+            });
+        }
+    </script>
+@endpush

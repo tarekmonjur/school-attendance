@@ -240,8 +240,11 @@
 <script src="{{url('dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('dist/js/demo.js')}}"></script>
+<script src="{{url('plugins/notify.min.js')}}"></script>
 
 <script>
+    var baseUrl = '{{url('/')}}';
+
     $(function () {
         $("#example1").DataTable();
         $('#example2').DataTable({
@@ -284,5 +287,8 @@
         })
     });
 </script>
+
+@stack('scripts')
+
 </body>
 </html>

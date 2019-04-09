@@ -42,7 +42,6 @@ class AttendanceController extends Controller
          $data['classes']  = DB::table('classname')->get();
          $data['sectiones']  = DB::table('section')->get();
 
-
         $data['students'] = $this->dailyAttendanceReport($data['class_name'],$data['class_section'],$data['from_date'], $data['to_date']);
 
         return view('attendance.daily_reports')->with($data);
@@ -57,10 +56,10 @@ class AttendanceController extends Controller
             'attendances' => function ($q) use ($fromDate, $toDate) {
                 $q->whereBetween('date', [$fromDate, $toDate]);
             },
-        ])->where([
-                    ['classname', '=',$class_name  ],
-                    ['section', '=', $section],
-                ]) ->get();
+        ])
+        ->where('classname', $class_name)
+        ->where('section', $section)
+        ->get();
 
         return $attendances;
     }
