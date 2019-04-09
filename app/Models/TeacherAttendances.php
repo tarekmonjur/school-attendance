@@ -8,16 +8,12 @@
 
 namespace App\Models;
 
-
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
-class Teacher_attendances extends Model
+class TeacherAttendances extends Model
 {
 
-
-     protected  $table = 'teacher_attendances';
-      
 
     public function getInTimeAttribute($value)
     {

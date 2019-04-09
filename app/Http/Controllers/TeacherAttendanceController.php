@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\teacher;
+use App\Models\Teacher;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -37,7 +37,7 @@ class TeacherAttendanceController extends Controller
         }
         $data['teachers'] = $this->dailyAttendanceReport($data['from_date'], $data['to_date']);
 
-        return view('tattendance.daily_reports')->with($data);
+        return view('teacher_attendance.daily_reports')->with($data);
     }
 
 
@@ -45,13 +45,13 @@ class TeacherAttendanceController extends Controller
     {
         $fromDate = Carbon::parse($fromDate)->format('Y-m-d');
         $toDate = Carbon::parse($toDate)->format('Y-m-d');
-        $tattendances = Teacher::with([
+        $teacher_attendances = Teacher::with([
             'teacher_attendances' => function ($q) use ($fromDate, $toDate) {
                 $q->whereBetween('date', [$fromDate, $toDate]);
             },
         ])->get();
 
-        return $tattendances;
+        return $teacher_attendances;
     }
 
 
@@ -88,7 +88,7 @@ class TeacherAttendanceController extends Controller
         $toDate = Carbon::parse($data['to_date'])->addDays(Carbon::parse($data['to_date'])->daysInMonth - 1)->format('Y-m-d');
         $data['teachers'] = $this->monthlyAttendanceReport($formDate, $toDate);
 
-        return view('tattendance.monthly_reports')->with($data);
+        return view('teacher_attendance.monthly_reports')->with($data);
     }
 
 

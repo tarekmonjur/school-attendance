@@ -146,7 +146,7 @@
                     </li>
 
                      <li class="nav-item has-treeview">
-                        <a href="{{url('/teacher/attendance')}}" class="nav-link @if($url1 == 'tattendance') active @endif">
+                        <a href="{{url('/teacher/attendance')}}" class="nav-link @if($url1 == 'teacher-attendance') active @endif">
                             <i class="nav-icon fa fa-calendar"></i>
                             <p>
                                Teacher Attendance
@@ -155,13 +155,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{url('/teacher/attendance/daily-reports')}}" class="nav-link">
+                                <a href="{{url('/teacher-attendance/daily-reports')}}" class="nav-link">
                                     <i class="fa fa-clock-o nav-icon"></i>
                                     <p>Daily Reports</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{url('/teacher/attendance/monthly-reports')}}" class="nav-link">
+                                <a href="{{url('/teacher-attendance/monthly-reports')}}" class="nav-link">
                                     <i class="fa fa-calendar-check-o nav-icon"></i>
                                     <p>Monthly Reports</p>
                                 </a>

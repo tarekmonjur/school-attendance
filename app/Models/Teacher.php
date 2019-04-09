@@ -7,7 +7,6 @@
  */
 
 namespace App\Models;
-/*use App\Models\Teacher_attendances;*/
 use Illuminate\Database\Eloquent\Model;
 
 class Teacher extends Model
@@ -16,14 +15,16 @@ class Teacher extends Model
 
     protected $primaryKey = 'em_id'; 
 
+
     public static function findTeacher($deviceId, $rfId)
     {
         return Student::where('rf_id', $rfId)->first();
     }
 
+
     public function teacher_attendances()
     {
-        return $this->hasMany(Teacher_attendances::class, 'teacher_id');
+        return $this->hasMany(TeacherAttendances::class, 'teacher_id');
     }
 
 }

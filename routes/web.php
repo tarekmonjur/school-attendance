@@ -37,9 +37,9 @@ $router->get('/attendance/monthly-reports','AttendanceController@monthlyAttendan
 
 
 /*===================Teacher Attendance Route ===============*/
-$router->get('/teacher/attendance','TeacherAttendanceController@index');
-$router->get('/teacher/attendance/daily-reports','TeacherAttendanceController@index');
-$router->get('/teacher/attendance/monthly-reports','TeacherAttendanceController@monthlyAttendance');
+$router->get('/teacher-attendance','TeacherAttendanceController@index');
+$router->get('/teacher-attendance/daily-reports','TeacherAttendanceController@index');
+$router->get('/teacher-attendance/monthly-reports','TeacherAttendanceController@monthlyAttendance');
 
 
 

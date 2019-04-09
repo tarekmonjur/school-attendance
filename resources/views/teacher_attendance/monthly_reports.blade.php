@@ -125,9 +125,7 @@
                             <thead>
                             <tr>
                                 <th>SL</th>
-                                <th>Student ID</th>
-                                <th>Student Roll</th>
-                                <th style="min-width: 150px">Student Name</th>
+                                <th style="min-width: 150px">Teacher Name</th>
                                 <th>RFID</th>
                                 @for($i=0; $i<=$month; $i++)
                                 <th>
@@ -139,11 +137,9 @@
                             </thead>
 
                             <tbody>
-                            @foreach($students as $student)
+                            @foreach($teachers as $teacher)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$student->sid}}</td>
-                                <td>{{$student->roll}}</td>
                                 <td>{{$student->name}}</td>
                                 <td>{{$student->rf_id}}</td>
                                 <?php
@@ -153,7 +149,7 @@
                                     $attend = false;
                                     $date = Carbon::parse($body_from_date)->format('Y-m');
                                     $body_from_date = Carbon::parse($body_from_date)->addMonth(1);
-                                    foreach($student->attendances as $attendance) {
+                                    foreach($teacher->attendances as $attendance) {
                                         if($date == $attendance->date){
                                             $attend = true;
                                             $total_attend += $attendance->total;
