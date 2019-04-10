@@ -70,11 +70,10 @@
                             </div>
 
                             <h4 class="title" style="color: white;">Daily Attendance Sheet :
-                            <strong>{{ $class_name }}</strong>
-                            <strong>{{ $class_section }}</strong>
-                             <strong
-                                        class="date-view">{{$from_date}}</strong> to
-                                <strong class="date-view">{{$to_date}}</strong>
+                            <strong>Class : <?php $cls = $classes->find($class_name); ?>{{ ($cls)?$cls->classname:'---' }}</strong>,
+{{--                            <strong>{{ $class_section }}</strong>--}}
+                             <strong class="date-view"> Date : {{$from_date}}</strong> to
+                             <strong class="date-view">{{$to_date}}</strong>
                             </h4>
 
                             <div class="clearfix"></div>

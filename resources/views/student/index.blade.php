@@ -34,7 +34,59 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" data-background-color="red">
-                        <h4 class="title" style="color: white;">Students List Info</h4>
+                        <form action="">
+                            <div class="pull-right">
+                                <button type="button" data-toggle="collapse" data-target="#demo"
+                                        class="btn btn-danger btn-sm search-form-toggle"><i
+                                            class="fa fa-search"></i>
+                                    Filter Results
+                                </button>
+
+                                <button class="btn btn-danger btn-sm export">
+                                    <i class="fa fa-download"> </i> Export
+                                </button>
+                            </div>
+
+                            <h4 class="title" style="color: white;">Student List Info :
+                                <strong>Class : <?php $cls = $classes->find($class_name); ?>{{ ($cls)?$cls->classname:'---' }}</strong>,
+{{--                                <strong>{{ $class_section }}</strong>--}}
+                            </h4>
+
+                            <div class="clearfix"></div>
+
+                            <div id="demo" class="collapse">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-3">
+                                        <div class="form-group datetimepicker-conatiner ">
+                                            <label for="start_date" class="control-label">Class </label>
+                                            <select name="class_name" id="" class="form-control">
+                                                @foreach($classes as $value)
+
+                                                    <option value="{{ $value->id }}">{{ $value->classname }}</option>
+
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="pull-right">
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                    id="filter-results-button"><i
+                                                        class="fa fa-search"></i> Filter
+                                            </button>
+                                            <button type="button" data-toggle="collapse" data-target="#demo"
+                                                    class="btn btn-danger btn-sm search-form-toggle"><i
+                                                        class="fa fa fa-angle-up"></i>
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
                     <div class="card-body">

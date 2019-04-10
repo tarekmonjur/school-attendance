@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classname;
+use App\Models\Section;
 use App\Models\Student;
 use Validator;
 use Carbon\Carbon;
@@ -35,7 +37,13 @@ class StudentController extends Controller
         }else{
             $data['to_date'] = Carbon::now()->format('Y-m-d');
         }
-        $data['students'] = Student::get();
+        $data['class_name'] = $request->input('class_name');
+        $data['class_section'] = $request->input('class_section');
+
+        $data['classes']  = Classname::get();
+        $data['sectiones'] = Section::get();
+
+        $data['students'] = Student::where('classname', $data['class_name'])->get();
 		return view('student.index')->with($data);
 	}
  

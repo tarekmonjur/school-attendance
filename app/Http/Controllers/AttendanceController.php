@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classname;
+use App\Models\Section;
 use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -39,8 +41,8 @@ class AttendanceController extends Controller
          $data['class_name'] = $request->input('class_name');
          $data['class_section'] = $request->input('class_section');
 
-         $data['classes']  = DB::table('classname')->get();
-         $data['sectiones']  = DB::table('section')->get();
+        $data['classes']  = Classname::get();
+        $data['sectiones'] = Section::get();
 
         $data['students'] = $this->dailyAttendanceReport($data['class_name'],$data['class_section'],$data['from_date'], $data['to_date']);
 
@@ -58,7 +60,7 @@ class AttendanceController extends Controller
             },
         ])
         ->where('classname', $class_name)
-        ->where('section', $section)
+//        ->where('section', $section)
         ->get();
 
         return $attendances;
