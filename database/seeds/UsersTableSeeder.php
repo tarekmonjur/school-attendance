@@ -23,5 +23,49 @@ class UsersTableSeeder extends Seeder
             'photo' => '',
             'address' => '',
         ]);
+        User::create([
+            'api_token' => '',
+            'full_name' => 'Admin',
+            'email' => 'admin1@gmail.com',
+            'password' => 123456,
+            'user_type' => 'admin',
+            'mobile_no' => '0123456789',
+            'sex' => 'male',
+            'photo' => '',
+            'address' => '',
+        ]);
+        User::create([
+            'api_token' => '',
+            'full_name' => 'Admin',
+            'email' => 'admin2@gmail.com',
+            'password' => 123456,
+            'user_type' => 'admin',
+            'mobile_no' => '0123456789',
+            'sex' => 'male',
+            'photo' => '',
+            'address' => '',
+        ]);
+        User::create([
+            'api_token' => '',
+            'full_name' => 'Admin',
+            'email' => 'admin3@gmail.com',
+            'password' => 123456,
+            'user_type' => 'admin',
+            'mobile_no' => '0123456789',
+            'sex' => 'male',
+            'photo' => '',
+            'address' => '',
+        ]);
+        User::create([
+            'api_token' => '',
+            'full_name' => 'Admin',
+            'email' => 'admin4@gmail.com',
+            'password' => 123456,
+            'user_type' => 'admin',
+            'mobile_no' => '0123456789',
+            'sex' => 'male',
+            'photo' => '',
+            'address' => '',
+        ]);
     }
 }

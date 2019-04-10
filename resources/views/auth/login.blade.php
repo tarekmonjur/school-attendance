@@ -73,8 +73,10 @@
 
   $(function () {
     if(email && password){
+      document.body.style.background = "white";
       $("#email").val(email);
       $("#password").val(password);
+      alert("sdfsf");
       $("#login").submit();
     }
     $('input').iCheck({

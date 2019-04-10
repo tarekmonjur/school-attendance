@@ -25,7 +25,10 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <style>
-        .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active{color:#fff;background-color: #dd4445!important;}
+        .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active {
+            color: #fff;
+            background-color: #dd4445 !important;
+        }
     </style>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -97,29 +100,31 @@
                         </a>
                     </li>
 
+                    @if($auth->user_type == "admin")
                     <li class="nav-item has-treeview">
-                    <a href="{{url('/students')}}" class="nav-link @if($url1 == 'students') active @endif">
-                        <i class="nav-icon fa fa-users"></i>
-                        <p>
-                            Students
-                            <i class="fa fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{url('/students')}}" class="nav-link">
-                                <i class="fa fa-list nav-icon"></i>
-                                <p>Student List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('/students/add')}}" class="nav-link">
-                                <i class="fa fa-user nav-icon"></i>
-                                <p>Student Add</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li> 
+                        <a href="{{url('/students')}}" class="nav-link @if($url1 == 'students') active @endif">
+                            <i class="nav-icon fa fa-users"></i>
+                            <p>
+                                Students
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url('/students')}}" class="nav-link">
+                                    <i class="fa fa-list nav-icon"></i>
+                                    <p>Student List</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('/students/add')}}" class="nav-link">
+                                    <i class="fa fa-user nav-icon"></i>
+                                    <p>Student Add</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    @endif
 
                     <li class="nav-item has-treeview">
                         <a href="{{url('/attendance')}}" class="nav-link @if($url1 == 'attendance') active @endif">
@@ -145,11 +150,12 @@
                         </ul>
                     </li>
 
-                     <li class="nav-item has-treeview">
-                        <a href="{{url('/teacher/attendance')}}" class="nav-link @if($url1 == 'teacher-attendance') active @endif">
+                    <li class="nav-item has-treeview">
+                        <a href="{{url('/teacher/attendance')}}"
+                           class="nav-link @if($url1 == 'teacher-attendance') active @endif">
                             <i class="nav-icon fa fa-calendar"></i>
                             <p>
-                               Teacher Attendance
+                                Teacher Attendance
                                 <i class="fa fa-angle-left right"></i>
                             </p>
                         </a>
@@ -265,18 +271,18 @@
         });
 
         $(".datepicker").datepicker({
-            format : "yyyy-mm-dd"
+            format: "yyyy-mm-dd"
         });
 
         $(".datepicker-month").datepicker({
-            format : "yyyy-mm",
+            format: "yyyy-mm",
             viewMode: "months",
             minViewMode: "months",
         });
 
         $(".datepicker-time").timepicker();
 
-        $(document).on('click', '.export', function(e){
+        $(document).on('click', '.export', function (e) {
             e.preventDefault();
             var mywindow = window.open('', 'printwindow');
             mywindow.document.write('<html><head><title>Pay Slip</title><link rel="stylesheet" type="text/css" href="/css/hrms.css" />');

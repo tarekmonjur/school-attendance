@@ -18,6 +18,9 @@ class StudentController extends Controller
     {
         parent::__construct();
         $this->middleware('auth');
+        if($this->auth && $this->auth->user_type != 'admin') {
+            return redirect('/');
+        }
     }
 
 
