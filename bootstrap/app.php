@@ -72,7 +72,8 @@ $app->bind(Illuminate\Session\SessionManager::class, function ($app) {
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
-    'guest' => App\Http\Middleware\RedirectIfAuthenticated::class
+    'guest' => App\Http\Middleware\RedirectIfAuthenticated::class,
+    'permission' => App\Http\Middleware\Permission::class
 ]);
 
 /*
