@@ -19,6 +19,21 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style>
     .login-box, .register-box{width: 400px!important;}
+    .overlay{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      background-color: white; /*dim the background*/
+    }
+    #loading{
+      position: absolute;
+      font-size: 30px;
+      left: 50%;
+      top: 50%;
+    }
   </style>
 </head>
 <body class="hold-transition login-page">
@@ -58,6 +73,11 @@
 
     </div>
   </div>
+  <?php $email = (isset($_GET['email']))?$_GET['email']:''; ?>
+  <?php $password = (isset($_GET['password']))?$_GET['password']:''; ?>
+  <?php if ($email && $password) {?>
+    <div class="overlay"><div id="loading">LOADING...</div></div>
+  <?php }?>
 </div>
 <!-- /.login-box -->
 
@@ -68,8 +88,8 @@
 <!-- iCheck -->
 <script src="{{url('plugins/iCheck/icheck.min.js')}}"></script>
 <script>
-  var email = '{{(isset($_GET['email']))?$_GET['email']:''}}';
-  var password = '{{(isset($_GET['password']))?$_GET['password']:''}}';
+  var email = '{{$email}}';
+  var password = '{{$password}}';
 
   $(function () {
     if(email && password){
