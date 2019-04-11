@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         $data['students'] = Student::count();
-        $data['student_cards'] = Student::whereNotNull('rf_id')->count();
+        $data['student_cards'] = Student::where('rf_id','!=','')->count();
         $toDate = Carbon::now()->format('Y-m-d');
         $data['attends'] = Attendance::where('date', $toDate)->count();
         $data['absences'] = $data['students'] - $data['attends'];
