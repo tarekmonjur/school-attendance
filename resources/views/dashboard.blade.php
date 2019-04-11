@@ -36,7 +36,7 @@
                   <p>Total Students</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-bag"></i>
+                  <i class="fa fa-users"></i>
                 </div>
                 <a href="{{url('students')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
@@ -50,7 +50,7 @@
                   <p>Today Total Attendances</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
+                  <i class="fa fa-clock-o"></i>
                 </div>
                 <a href="{{url('attendance/daily-reports')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
@@ -64,7 +64,7 @@
                   <p>Today Total Absences</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person-add"></i>
+                  <i class="fa fa-calendar"></i>
                 </div>
                 <a href="{{url('attendance/daily-reports')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
@@ -78,18 +78,28 @@
                   <p>Today Total SMS</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
+                  <i class="fa fa-envelope"></i>
                 </div>
                 <a href="{{url('sms/logs')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
           </div>
-          <!-- /.row -->
-
-
-   
-          <!-- /.row (main row) -->
+          <div class="row">
+            <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{$student_cards}}</h3>
+                <p>Total Student Cards</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-address-card"></i>
+              </div>
+              <a href="{{url('students')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          </div>
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
