@@ -124,6 +124,30 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="{{url('/teachers')}}" class="nav-link @if($url1 == 'teachers') active @endif">
+                            <i class="nav-icon fa fa-users"></i>
+                            <p>
+                                Teachers
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url('/teachers')}}" class="nav-link">
+                                    <i class="fa fa-list nav-icon"></i>
+                                    <p>Teachers List</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('/teachers/add')}}" class="nav-link">
+                                    <i class="fa fa-user nav-icon"></i>
+                                    <p>Teachers Add</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     @endif
 
                     <li class="nav-item has-treeview">

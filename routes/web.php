@@ -43,10 +43,13 @@ $router->get('/teacher-attendance/daily-reports','TeacherAttendanceController@in
 $router->get('/teacher-attendance/monthly-reports','TeacherAttendanceController@monthlyAttendance');
 
 
-
-
-
-
+/*=================== Teacher Route ===============*/
+$router->get('/teachers', 'TeacherController@index');
+$router->get('/teachers/add', 'TeacherController@create');
+$router->post('/teachers/add', 'TeacherController@store');
+$router->post('/teachers/{id}', 'TeacherController@save');
+$router->get('/teachers/edit/{id}', 'TeacherController@edit');
+$router->post('/teachers/edit/{id}', 'TeacherController@update');
 
 
 /*=================== SMS Route ===============*/
