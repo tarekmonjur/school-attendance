@@ -72,6 +72,25 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        <input type="text" class="form-control" name="email" id="email"
+                                               placeholder="Enter Email Address" value="{{old('email')}}">
+                                        <span class="text-danger">{{errors('email')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="mobile_number">Mobile Number</label>
+                                        <input type="text" class="form-control" name="mobile_number" id="mobile_number"
+                                               placeholder="Enter Mobile Number" value="{{old('mobile_number')}}">
+                                        <span class="text-danger">{{errors('mobile_number')}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
                                         <label for="fname">Father Name</label>
                                         <input type="text" class="form-control" name="fname" id="fname"
                                                placeholder="Enter Father Name" value="{{old('fname')}}">
@@ -93,8 +112,8 @@
                                     <div class="form-group">
                                         <label for="classname">Class Name</label>
                                         <select class="form-control" name="classname" id="classname">
-                                            @foreach(getClassName() as $key => $value)
-                                            <option value="{{$key}}" @if(old('classname') == $key) selected @endif>{{$value}}</option>
+                                            @foreach($classes as $class)
+                                            <option value="{{$class->id}}" @if(old('classname') == $class->id) selected @endif>{{$class->classname}}</option>
                                             @endforeach
                                         </select>
                                         <span class="text-danger">{{errors('classname')}}</span>
@@ -102,10 +121,13 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="mobile_number">Mobile Number</label>
-                                        <input type="text" class="form-control" name="mobile_number" id="mobile_number"
-                                               placeholder="Enter Mobile Number" value="{{old('mobile_number')}}">
-                                        <span class="text-danger">{{errors('mobile_number')}}</span>
+                                        <label for="section">Section Name</label>
+                                        <select class="form-control" name="section" id="section">
+                                            @foreach($sections as $section)
+                                                <option value="{{$section->secid}}" @if(old('section') == $section->secid) selected @endif>{{$section->section}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="text-danger">{{errors('section')}}</span>
                                     </div>
                                 </div>
                             </div>

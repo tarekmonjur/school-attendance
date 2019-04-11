@@ -41,7 +41,7 @@ class StudentController extends Controller
         $data['class_section'] = $request->input('class_section');
 
         $data['classes']  = Classname::get();
-        $data['sectiones'] = Section::get();
+        $data['sections'] = Section::get();
 
         $data['students'] = Student::where('classname', $data['class_name'])->get();
 		return view('student.index')->with($data);
@@ -50,7 +50,9 @@ class StudentController extends Controller
 
 	public function create()
     {
-		return view('student.add');
+        $data['classes']  = Classname::get();
+        $data['sections'] = Section::get();
+		return view('student.add')->with($data);
 	}
 
 
