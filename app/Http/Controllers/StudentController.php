@@ -43,7 +43,11 @@ class StudentController extends Controller
         $data['classes']  = Classname::get();
         $data['sections'] = Section::get();
 
-        $data['students'] = Student::where('classname', $data['class_name'])->get();
+        if($data['class_name']){
+            $data['students'] = Student::with('class','classSection')->where('classname', $data['class_name'])->get();
+        }else{
+            $data['students'] = Student::with('class','classSection')->get();
+        }
 		return view('student.index')->with($data);
 	}
  

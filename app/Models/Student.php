@@ -24,4 +24,14 @@ class Student extends Model
         return $this->hasMany(Attendance::class);
     }
 
+    public function class()
+    {
+        return $this->belongsTo(Classname::class, 'classname');
+    }
+
+    public function classSection()
+    {
+        return $this->belongsTo(Section::class, 'section', 'secid');
+    }
+
 }

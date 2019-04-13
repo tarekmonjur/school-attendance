@@ -48,7 +48,7 @@
                             </div>
 
                             <h4 class="title" style="color: white;">Student List Info :
-                                <strong>Class : <?php $cls = $classes->find($class_name); ?>{{ ($cls)?$cls->classname:'---' }}</strong>,
+                                <strong>Class : <?php $cls = $classes->find($class_name); ?>{{ ($cls)?$cls->classname:'All Class' }} Students</strong>,
 {{--                                <strong>{{ $class_section }}</strong>--}}
                             </h4>
 
@@ -60,10 +60,9 @@
                                         <div class="form-group datetimepicker-conatiner ">
                                             <label for="start_date" class="control-label">Class </label>
                                             <select name="class_name" id="" class="form-control">
+                                                <option value="">--All Class--</option>
                                                 @foreach($classes as $value)
-
                                                     <option value="{{ $value->id }}">{{ $value->classname }}</option>
-
                                                 @endforeach
                                             </select>
                                         </div>
@@ -94,13 +93,14 @@
                             <thead>
                             <tr>
                                 <th>SL</th>
-                                <th width="200px">ID</th>
-                                <th width="200px">RFID</th>
+                                <th width="130px">ID</th>
+                                <th width="130px">RFID</th>
                                 <th>Roll</th>
                                 <th>Name</th>
                                 <th>F.Name</th>
                                 <th>M.Name</th>
                                 <th>Class</th>
+                                <th>Section</th>
                                 <th>Mobile</th>
                                 <th>Gender</th>
                                 <th>Address</th>
@@ -112,16 +112,17 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>
-                                        <input type="text" id="sid_{{$student->id}}" value="{{$student->sid}}">
+                                        <input type="text" id="sid_{{$student->id}}" value="{{$student->sid}}" style="width: 130px">
                                     </td>
                                     <td>
-                                        <input type="text" id="rf_id_{{$student->id}}" value="{{$student->rf_id}}">
+                                        <input type="text" id="rf_id_{{$student->id}}" value="{{$student->rf_id}}" style="width: 130px">
                                     </td>
                                     <td>{{$student->roll}}</td>
                                     <td>{{$student->name}}</td>
                                     <td>{{$student->fname}}</td>
                                     <td>{{$student->mname}}</td>
-                                    <td>{{$student->classname}}</td>
+                                    <td>{{($student->class)?$student->class->classname:''}}</td>
+                                    <td>{{($student->classSection)?$student->classSection->section:''}}</td>
                                     <td>{{$student->gsm}}</td>
                                     <td>{{$student->sex}}</td>
                                     <td>{{$student->address}}</td>
@@ -135,13 +136,14 @@
                             <tfoot>
                             <tr>
                                 <th>SL</th>
-                                <th>ID</th>
-                                <th>RFID</th>
+                                <th width="150px">ID</th>
+                                <th width="150px">RFID</th>
                                 <th>Roll</th>
                                 <th>Name</th>
                                 <th>F.Name</th>
                                 <th>M.Name</th>
                                 <th>Class</th>
+                                <th>Section</th>
                                 <th>Mobile</th>
                                 <th>Gender</th>
                                 <th>Address</th>
