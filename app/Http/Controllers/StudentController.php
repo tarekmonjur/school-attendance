@@ -122,6 +122,8 @@ class StudentController extends Controller
         if (!$data['student']) {
            return redirect('/students');
         }
+        $data['classes']  = Classname::get();
+        $data['sections'] = Section::get();
         return view('student.edit')->with($data);
     }
 
@@ -150,13 +152,16 @@ class StudentController extends Controller
             $student->name = $request->input('name');
             $student->fname = $request->input('fname');
             $student->mname = $request->input('mname');
-            $student->sex = $request->input('sex');
+            $student->sex = $request->input('gender');
             $student->roll = $request->input('roll');
             $student->classname = $request->input('classname');
+            $student->section = $request->input('section');
             $student->gsm = $request->input('mobile_number');
             $student->bdate = $request->input('bdate');
-            $student->sex = $request->input('gender');
+            $student->email = $request->input('email');
+            $student->mfee = $request->input('mfee');
             $student->address = $request->input('address');
+            $student->paddress = $request->input('paddress');
             $student->save();
             $request->session()->flash('success', 'Student successfully Updated.');
             return redirect('students');
