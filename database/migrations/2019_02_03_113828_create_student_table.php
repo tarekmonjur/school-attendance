@@ -15,21 +15,22 @@ class CreateStudentTable extends Migration
     {
         Schema::create('student', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('sid')->nullable();
-            $table->string('rf_id')->nullable();
+            $table->string('sid');
+            $table->string('rf_id');
             $table->string('bid')->nullable();
             $table->string('name');
-            $table->string('fname')->nullable();
-            $table->string('mname')->nullable();
-            $table->string('sex')->nullable();
-            $table->string('roll')->nullable();
+            $table->string('fname');
+            $table->string('mname');
+            $table->string('sex');
+            $table->string('roll');
             $table->string('year')->nullable();
-            $table->string('classname')->nullable();
-            $table->string('section')->nullable();
-            $table->string('bdate')->nullable();
-            $table->string('gsm')->nullable();
-            $table->string('email',100)->nullable();
-            $table->string('mfee')->nullable();
+            $table->string('classname');
+            $table->string('section');
+            $table->string('bdate');
+            $table->string('gsm');
+            $table->string('email',100);
+            $table->string('password');
+            $table->string('mfee');
             $table->string('address')->nullable();
             $table->string('paddress')->nullable();
             $table->string('fnid')->nullable();
@@ -38,7 +39,6 @@ class CreateStudentTable extends Migration
             $table->string('p_ins')->nullable();
             $table->string('adate')->nullable();
             $table->string('active')->nullable();
-            $table->string('password')->nullable();
             $table->string('lname')->nullable();
             $table->string('location')->nullable();
             $table->string('f_location')->nullable();

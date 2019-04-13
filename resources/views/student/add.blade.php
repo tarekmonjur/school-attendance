@@ -32,7 +32,7 @@
                     <form role="form" method="post" action="">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label for="sid">Student ID</label>
                                         <input type="text" class="form-control" name="sid" id="sid"
@@ -40,7 +40,7 @@
                                         <span class="text-danger">{{errors('sid')}}</span>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label for="rf_id">RFID</label>
                                         <input type="text" class="form-control" name="rf_id" id="rf_id"
@@ -48,18 +48,7 @@
                                         <span class="text-danger">{{errors('rf_id')}}</span>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" class="form-control" name="name" id="name"
-                                               placeholder="Enter Name" value="{{old('name')}}">
-                                        <span class="text-danger">{{errors('name')}}</span>
-                                    </div>
-                                </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label for="roll">Roll</label>
                                         <input type="text" class="form-control" name="roll" id="roll"
@@ -70,15 +59,15 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
-                                        <label for="email">Email Address</label>
-                                        <input type="text" class="form-control" name="email" id="email"
-                                               placeholder="Enter Email Address" value="{{old('email')}}">
-                                        <span class="text-danger">{{errors('email')}}</span>
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" name="name" id="name"
+                                               placeholder="Enter Name" value="{{old('name')}}">
+                                        <span class="text-danger">{{errors('name')}}</span>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label for="mobile_number">Mobile Number</label>
                                         <input type="text" class="form-control" name="mobile_number" id="mobile_number"
@@ -86,6 +75,18 @@
                                         <span class="text-danger">{{errors('mobile_number')}}</span>
                                     </div>
                                 </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        <input type="text" class="form-control" name="email" id="email"
+                                               placeholder="Enter Email Address" value="{{old('email')}}">
+                                        <span class="text-danger">{{errors('email')}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
                             </div>
 
                             <div class="row">
@@ -108,7 +109,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label for="classname">Class Name</label>
                                         <select class="form-control" name="classname" id="classname">
@@ -119,7 +120,7 @@
                                         <span class="text-danger">{{errors('classname')}}</span>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label for="section">Section Name</label>
                                         <select class="form-control" name="section" id="section">
@@ -130,10 +131,18 @@
                                         <span class="text-danger">{{errors('section')}}</span>
                                     </div>
                                 </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="mfee">Monthly Fee</label>
+                                        <input type="text" class="form-control" name="mfee" id="mfee"
+                                               placeholder="Enter Monthly Fee" value="{{old('mfee')}}">
+                                        <span class="text-danger">{{errors('mfee')}}</span>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label for="bdate">Date of Birth</label>
                                         <input type="text" class="form-control" name="bdate" id="bdate"
@@ -141,7 +150,7 @@
                                         <span class="text-danger">{{errors('bdate')}}</span>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <select class="form-control" name="gender" id="gender">
@@ -151,15 +160,31 @@
                                         <span class="text-danger">{{errors('gender')}}</span>
                                     </div>
                                 </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="bgroup">Blood Group</label>
+                                        <input type="text" class="form-control" name="bgroup" id="bgroup"
+                                               placeholder="Enter Blood Group" value="{{old('bgroup')}}">
+                                        <span class="text-danger">{{errors('bgroup')}}</span>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label for="address">Address</label>
                                         <textarea class="form-control" name="address" id="address"
                                                   placeholder="Enter Address">{{old('address')}}</textarea>
                                         <span class="text-danger">{{errors('address')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="paddress">Permanent Address</label>
+                                        <textarea class="form-control" name="paddress" id="paddress"
+                                                  placeholder="Enter Permanent Address">{{old('paddress')}}</textarea>
+                                        <span class="text-danger">{{errors('paddress')}}</span>
                                     </div>
                                 </div>
                             </div>
