@@ -49,8 +49,8 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'staff_id' => 'required|min:3|max:50|unique:'.(new Student)->getTable(),
-            'rf_id' => 'required|min:3|max:50|unique:'.(new Student)->getTable(),
+            'staff_id' => 'required|min:3|max:50|unique:'.(new Teacher)->getTable(),
+            'rf_id' => 'required|min:3|max:50|unique:'.(new Teacher)->getTable(),
             'name' => 'required|min:3|max:50',
             'designation' => 'required|min:3|max:50',
             'nid' => 'required|min:3|max:50',

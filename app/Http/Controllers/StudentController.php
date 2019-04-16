@@ -71,6 +71,7 @@ class StudentController extends Controller
             'roll' => 'required|max:10|unique:'.(new Student)->getTable(),
             'classname' => 'required',
             'mobile_number' => 'required|max:13|min:11',
+            'mfee' => 'numeric'
         ]);
         if ($validator->fails()) {
             $request->session()->flash('errors', $validator->errors()->messages());
@@ -93,7 +94,7 @@ class StudentController extends Controller
             $student->bdate = $request->input('bdate');
             $student->gsm = $request->input('mobile_number');
             $student->email = $request->input('email');
-            $student->mfee = $request->input('mfee');
+            $student->mfee = $request->input('mfee')?:0;
             $student->address = $request->input('address');
             $student->paddress = $request->input('paddress');
             $student->fnid = $request->input('fnid')?:'';
@@ -108,7 +109,7 @@ class StudentController extends Controller
             $student->f_location = $request->input('f_location')?:'';
             $student->m_location = $request->input('m_location')?:'';
             $student->o_location = $request->input('o_location')?:'';
-            $student->m_balance = $request->input('m_balance')?:'';
+            $student->m_balance = $request->input('m_balance')?:0;
             $student->billdate = $request->input('billdate')?:'';
             $student->save();
             $request->session()->flash('success', 'Student successfully added.');
@@ -143,6 +144,7 @@ class StudentController extends Controller
             'roll' => 'required|max:10|unique:'.(new Student)->getTable().',id',
             'classname' => 'required',
             'mobile_number' => 'required|max:13|min:11',
+            'mfee' => 'numeric'
         ]);
         if ($validator->fails()) {
             $request->session()->flash('errors', $validator->errors()->messages());
@@ -163,7 +165,7 @@ class StudentController extends Controller
             $student->gsm = $request->input('mobile_number');
             $student->bdate = $request->input('bdate');
             $student->email = $request->input('email');
-            $student->mfee = $request->input('mfee');
+            $student->mfee = $request->input('mfee')?:0;
             $student->address = $request->input('address');
             $student->paddress = $request->input('paddress');
             $student->save();
