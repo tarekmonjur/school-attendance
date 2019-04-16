@@ -56,7 +56,7 @@ function getClassName()
 function getStudentId()
 {
     $student = Student::orderBy('id', 'desc')->first();
-    if($student){
+    if($student && is_numeric($student->sid)){
         return $student->sid + 1;
     }
     return '0000001';
