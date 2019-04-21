@@ -68,7 +68,7 @@ class StudentController extends Controller
             'name' => 'required|min:3|max:50',
             'fname' => 'required|min:3|max:50',
             'mname' => 'required|min:3|max:50',
-            'roll' => 'required|max:10|unique:'.(new Student)->getTable(),
+            'roll' => 'required|max:10',
             'classname' => 'required',
             'mobile_number' => 'required|max:13|min:11',
             'mfee' => 'numeric'
@@ -141,7 +141,7 @@ class StudentController extends Controller
             'name' => 'required|min:3|max:50',
             'fname' => 'required|min:3|max:50',
             'mname' => 'required|min:3|max:50',
-            'roll' => 'required|max:10|unique:'.(new Student)->getTable().',id',
+            'roll' => 'required|max:10',
             'classname' => 'required',
             'mobile_number' => 'required|max:13|min:11',
             'mfee' => 'numeric'
