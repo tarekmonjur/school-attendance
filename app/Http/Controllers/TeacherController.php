@@ -154,15 +154,15 @@ class TeacherController extends Controller
 
     public function save(Request $request, $id)
     {
-        $student = Student::find($id);
-        if (!$student) {
-            return $this->setJsonMessage('', 'error', 500, 'Error!', 'Student not found.');
+        $teacher = Teacher::find($id);
+        if (!$teacher) {
+            return $this->setJsonMessage('', 'error', 500, 'Error!', 'Teacher not found.');
         }
         try {
-            $student->sid = $request->input('sid');
-            $student->rf_id = $request->input('rf_id');
-            $student->save();
-            return $this->setJsonMessage('', 'success', 200, 'Success!', 'Student successfully saved.');
+            $teacher->staff_id = $request->input('sid');
+            $teacher->rf_id = $request->input('rf_id');
+            $teacher->save();
+            return $this->setJsonMessage('', 'success', 200, 'Success!', 'Teacher successfully saved.');
         }catch(\Exception $e) {
             return $this->setJsonMessage('', 'error', 500, 'Error!', 'Something was wrong.');
         }
