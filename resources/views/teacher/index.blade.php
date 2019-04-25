@@ -61,7 +61,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>
-                                        <input type="text" style="width: 120px" id="sid_{{$teacher->em_id}}" value="{{$teacher->em_id}}">
+                                        <input type="text" style="width: 120px" id="sid_{{$teacher->em_id}}" value="{{$teacher->staff_id}}">
                                     </td>
                                     <td>
                                         <input type="text" style="width: 120px" id="rf_id_{{$teacher->em_id}}" value="{{$teacher->rf_id}}">

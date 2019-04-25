@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title','Student Edit')
+@section('title','Teacher Add')
 @section('content')
     <style>
         .card [data-background-color="red"] {
@@ -26,7 +26,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" data-background-color="red">
-                        <h3 class="card-title">Edit Student</h3>
+                        <h3 class="card-title">Edit Teacher</h3>
                     </div>
 
                     <form role="form" method="post" action="">
@@ -34,17 +34,17 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="sid">Student ID</label>
-                                        <input type="text" class="form-control" name="sid" id="sid"
-                                               placeholder="Enter Student ID" value="{{$student->sid}}">
-                                        <span class="text-danger">{{errors('sid')}}</span>
+                                        <label for="staff_id">Staff ID</label>
+                                        <input type="text" class="form-control" name="staff_id" id="staff_id"
+                                               placeholder="Enter Staff ID" value="{{old('staff_id')?:$teacher->staff_id}}">
+                                        <span class="text-danger">{{errors('staff_id')}}</span>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="rf_id">RFID</label>
                                         <input type="text" class="form-control" name="rf_id" id="rf_id"
-                                               placeholder="Enter RFID" value="{{(old('rf_id'))?:$student->rf_id}}">
+                                               placeholder="Enter RFID" value="{{old('rf_id')?:$teacher->rf_id}}">
                                         <span class="text-danger">{{errors('rf_id')}}</span>
                                     </div>
                                 </div>
@@ -55,16 +55,16 @@
                                     <div class="form-group">
                                         <label for="name">Name</label>
                                         <input type="text" class="form-control" name="name" id="name"
-                                               placeholder="Enter Name" value="{{(old('name'))?:$student->name}}">
+                                               placeholder="Enter Name" value="{{old('name')?:$teacher->name}}">
                                         <span class="text-danger">{{errors('name')}}</span>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="roll">Roll</label>
-                                        <input type="text" class="form-control" name="roll" id="roll"
-                                               placeholder="Enter Roll" value="{{(old('roll'))?:$student->roll}}">
-                                        <span class="text-danger">{{errors('roll')}}</span>
+                                        <label for="nid">National ID</label>
+                                        <input type="text" class="form-control" name="nid" id="nid"
+                                               placeholder="Enter National ID" value="{{old('nid')?:$teacher->nid}}">
+                                        <span class="text-danger">{{errors('nid')}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -72,40 +72,37 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="fname">Father Name</label>
-                                        <input type="text" class="form-control" name="fname" id="fname"
-                                               placeholder="Enter Father Name" value="{{(old('fname'))?:$student->fname}}">
-                                        <span class="text-danger">{{errors('fname')}}</span>
+                                        <label for="designation">Designation</label>
+                                        <input type="text" class="form-control" name="designation" id="designation"
+                                               placeholder="Enter Designation" value="{{old('designation')?:$teacher->post}}">
+                                        <span class="text-danger">{{errors('designation')}}</span>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="mname">Mather Name</label>
-                                        <input type="text" class="form-control" name="mname" id="mname"
-                                               placeholder="Enter Mother Name" value="{{(old('mname'))?:$student->mname}}">
-                                        <span class="text-danger">{{errors('mname')}}</span>
+                                        <label for="edu">Education</label>
+                                        <input type="text" class="form-control" name="edu" id="edu"
+                                               placeholder="Enter Education" value="{{old('edu')?:$teacher->edu}}">
+                                        <span class="text-danger">{{errors('edu')}}</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="classname">Class Name</label>
-                                        <select class="form-control" name="classname" id="classname">
-                                            @foreach(getClassName() as $key => $value)
-                                                <option value="{{$key}}" @if(old('classname') == $key || $student->classname == $key) selected @endif>{{$value}}</option>
-                                            @endforeach
-                                        </select>
-                                        <span class="text-danger">{{errors('classname')}}</span>
-                                    </div>
-                                </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="mobile_number">Mobile Number</label>
                                         <input type="text" class="form-control" name="mobile_number" id="mobile_number"
-                                               placeholder="Enter Mobile Number" value="{{(old('mobile_number'))?:$student->gsm}}">
+                                               placeholder="Enter Mobile Number" value="{{old('mobile_number')?:$teacher->gsm}}">
                                         <span class="text-danger">{{errors('mobile_number')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="salary">Salary</label>
+                                        <input type="text" class="form-control" name="salary" id="salary"
+                                               placeholder="Enter Salary" value="{{old('salary')?:$teacher->salary}}">
+                                        <span class="text-danger">{{errors('salary')}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -113,18 +110,18 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="bdate">Date of Birth</label>
-                                        <input type="text" class="form-control" name="bdate" id="bdate"
-                                               placeholder="Enter Date of Birth" value="{{(old('bdate'))?:$student->bdate}}">
-                                        <span class="text-danger">{{errors('bdate')}}</span>
+                                        <label for="bgroup">Blood Group</label>
+                                        <input type="text" class="form-control" name="bgroup" id="bgroup"
+                                               placeholder="Enter Blood Group" value="{{old('bgroup')?:$teacher->bgroup}}">
+                                        <span class="text-danger">{{errors('bgroup')}}</span>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <select class="form-control" name="gender" id="gender">
-                                            <option value="Male" @if(old('gender') == 'Male' || $student->sex == 'Male') selected @endif>Male</option>
-                                            <option value="Female" @if(old('gender') == 'Female' || $student->sex == 'Female') selected @endif>Female</option>
+                                            <option value="Male" @if(old('gender') == 'Male' || $teacher->sex == 'Male') selected @endif>Male</option>
+                                            <option value="Female" @if(old('gender') == 'Female' || $teacher->sex == 'Female') selected @endif>Female</option>
                                         </select>
                                         <span class="text-danger">{{errors('gender')}}</span>
                                     </div>
@@ -136,7 +133,7 @@
                                     <div class="form-group">
                                         <label for="address">Address</label>
                                         <textarea class="form-control" name="address" id="address"
-                                                  placeholder="Enter Address">{{(old('address'))?:$student->address}}</textarea>
+                                                  placeholder="Enter Address">{{old('address')?:$teacher->address}}</textarea>
                                         <span class="text-danger">{{errors('address')}}</span>
                                     </div>
                                 </div>
