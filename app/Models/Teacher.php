@@ -13,7 +13,9 @@ class Teacher extends Model
 {
     protected $table = "teacher";
 
-    protected $primaryKey = 'em_id'; 
+    protected $primaryKey = 'em_id';
+
+    public $timestamps = false;
 
 
     public static function findTeacher($deviceId, $rfId)

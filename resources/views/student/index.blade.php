@@ -104,7 +104,7 @@
                                 <th>Mobile</th>
                                 <th>Gender</th>
                                 <th>Address</th>
-                                <th>Action</th>
+                                <th width="80px">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -136,8 +136,8 @@
                             <tfoot>
                             <tr>
                                 <th>SL</th>
-                                <th width="150px">ID</th>
-                                <th width="150px">RFID</th>
+                                <th width="130px">ID</th>
+                                <th width="130px">RFID</th>
                                 <th>Roll</th>
                                 <th>Name</th>
                                 <th>F.Name</th>

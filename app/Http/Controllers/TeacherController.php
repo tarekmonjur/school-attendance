@@ -62,13 +62,13 @@ class TeacherController extends Controller
             $request->session()->flash('old', $request->all());
             return redirect('/teachers/add');
         }
-        try {
+//        try {
             $teacher = new Teacher;
             $teacher->staff_id = $request->input('staff_id');
             $teacher->rf_id = $request->input('rf_id');
             $teacher->bid = 1;
             $teacher->name = $request->input('name');
-            $teacher->designation = $request->input('designation');
+            $teacher->post = $request->input('designation');
             $teacher->nid = $request->input('nid');
             $teacher->edu = $request->input('edu');
             $teacher->sex = $request->input('gender');
@@ -77,6 +77,7 @@ class TeacherController extends Controller
             $teacher->address = $request->input('address');
             $teacher->salary = $request->input('salary');
             $teacher->note = 'N/A';
+            $teacher->balance = '0';
             $teacher->password = $request->input('staff_id');
             $teacher->date = date('d-m-Y');
             $teacher->location = 'N/A';
@@ -86,10 +87,10 @@ class TeacherController extends Controller
             $teacher->save();
             $request->session()->flash('success', 'Teachers successfully added.');
             return redirect('teachers');
-        }catch(\Exception $e){
-            $request->session()->flash('error', 'Sorry! Teachers not added.');
-            return redirect('teachers/add');
-        }
+//        }catch(\Exception $e){
+//            $request->session()->flash('error', 'Sorry! Teachers not added.');
+//            return redirect('teachers/add');
+//        }
     }
 
 

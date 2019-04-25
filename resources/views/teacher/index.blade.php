@@ -42,8 +42,8 @@
                             <thead>
                             <tr>
                                 <th>SL</th>
-                                <th width="200px">ID</th>
-                                <th width="200px">RFID</th>
+                                <th width="120px">ID</th>
+                                <th width="120px">RFID</th>
                                 <th>Name</th>
                                 <th>Designation</th>
                                 <th>Education</th>
@@ -53,7 +53,7 @@
                                 <th>B.Group</th>
                                 <th>Gender</th>
                                 <th>Address</th>
-                                <th>Action</th>
+                                <th width="100px">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -61,10 +61,10 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>
-                                        <input type="text" id="sid_{{$teacher->em_id}}" value="{{$teacher->em_id}}">
+                                        <input type="text" style="width: 120px" id="sid_{{$teacher->em_id}}" value="{{$teacher->em_id}}">
                                     </td>
                                     <td>
-                                        <input type="text" id="rf_id_{{$teacher->em_id}}" value="{{$teacher->rf_id}}">
+                                        <input type="text" style="width: 120px" id="rf_id_{{$teacher->em_id}}" value="{{$teacher->rf_id}}">
                                     </td>
                                     <td>{{$teacher->name}}</td>
                                     <td>{{$teacher->post}}</td>
@@ -85,8 +85,8 @@
                             <tfoot>
                             <tr>
                                 <th>SL</th>
-                                <th width="200px">ID</th>
-                                <th width="200px">RFID</th>
+                                <th width="120px">ID</th>
+                                <th width="120px">RFID</th>
                                 <th>Name</th>
                                 <th>Designation</th>
                                 <th>Education</th>
@@ -96,7 +96,7 @@
                                 <th>B.Group</th>
                                 <th>Gender</th>
                                 <th>Address</th>
-                                <th>Action</th>
+                                <th width="100px">Action</th>
                             </tr>
                             </tfoot>
                         </table>
