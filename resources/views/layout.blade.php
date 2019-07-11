@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{url('plugins/iCheck/flat/blue.css')}}">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{url('plugins/datatables/dataTables.bootstrap4.css')}}">
+    <link rel="stylesheet" href="{{url('plugins/datatables/buttons.dataTables.min.css')}}">
     <!-- Date Picker -->
     <link rel="stylesheet" href="{{url('plugins/datepicker/datepicker3.css')}}">
     <!-- Daterange picker -->
@@ -29,6 +30,8 @@
             color: #fff;
             background-color: #dd4445 !important;
         }
+        body{font-size: 14px!important;}
+        .btn-group-sm>.btn, .btn-sm{font-size: 12px!important;}
     </style>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -247,7 +250,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="{{url('plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{url('plugins/jquery/jquery.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{url('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- Sparkline -->
@@ -255,6 +258,13 @@
 <!-- DataTables -->
 <script src="{{url('plugins/datatables/jquery.dataTables.js')}}"></script>
 <script src="{{url('plugins/datatables/dataTables.bootstrap4.js')}}"></script>
+<!-- Jquery datatable tools js -->
+<script type="text/javascript" src="{{url('plugins/datatables/dataTables.buttons.min.js')}}"></script>
+<script type="text/javascript" src="{{url('plugins/datatables/jszip.min.js')}}"></script>
+<script type="text/javascript" src="{{url('plugins/datatables/pdfmake.min.js')}}"></script>
+<script type="text/javascript" src="{{url('plugins/datatables/vfs_fonts.js')}}"></script>
+<script type="text/javascript" src="{{url('plugins/datatables/buttons.html5.min.js')}}"></script>
+<!-- dataTables Tools / -->
 <!-- date-range-picker -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
 <script src="{{url('plugins/daterangepicker/daterangepicker.js')}}"></script>
@@ -266,32 +276,49 @@
 <script src="{{url('plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{url('dist/js/adminlte.js')}}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{url('dist/js/pages/dashboard.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{url('dist/js/demo.js')}}"></script>
 <script src="{{url('plugins/notify.min.js')}}"></script>
 
 <script>
     var baseUrl = '{{url('/')}}';
 
     $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false
+        $("#example1, #example2").DataTable({
+            dom: 'Bfrtip',
+            lengthMenu:
+                [
+                    [ 50, -1 ],
+                    [ '50 rows', 'Show all' ]
+                ],
+            buttons: [
+                'pageLength',
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5',
+            ],
+            search: true,
+            ordering: false,
         });
         $('#attendances-table').DataTable({
+            dom: 'Bfrtip',
+            lengthMenu:
+                [
+                    [ 50, -1 ],
+                    [ '50 rows', 'Show all' ]
+                ],
+            buttons: [
+                'pageLength',
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5',
+            ],
             "paging": true,
             "lengthChange": true,
             "searching": true,
             "ordering": false,
             "info": true,
-            "autoWidth": false
+            "autoWidth": false,
         });
 
         $(".datepicker").datepicker({

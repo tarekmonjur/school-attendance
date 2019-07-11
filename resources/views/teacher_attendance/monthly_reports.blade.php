@@ -140,8 +140,8 @@
                             @foreach($teachers as $teacher)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$student->name}}</td>
-                                <td>{{$student->rf_id}}</td>
+                                <td>{{$teacher->name}}</td>
+                                <td>{{$teacher->rf_id}}</td>
                                 <?php
                                 $total_attend = 0;
                                 $body_from_date = $from_date;
@@ -149,7 +149,7 @@
                                     $attend = false;
                                     $date = Carbon::parse($body_from_date)->format('Y-m');
                                     $body_from_date = Carbon::parse($body_from_date)->addMonth(1);
-                                    foreach($teacher->attendances as $attendance) {
+                                    foreach($teacher->teacher_attendances as $attendance) {
                                         if($date == $attendance->date){
                                             $attend = true;
                                             $total_attend += $attendance->total;
