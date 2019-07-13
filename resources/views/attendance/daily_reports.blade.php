@@ -42,7 +42,6 @@
 
         #attendances-table_filter input {
             box-shadow: none !important;
-            margin-bottom: -20px;
         }
 
         .table-responsive {

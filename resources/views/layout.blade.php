@@ -11,11 +11,12 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}">
     <!-- Theme style -->
+    <link rel="stylesheet" href="{{url('dist/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{url('dist/css/adminlte.min.css')}}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{url('plugins/iCheck/flat/blue.css')}}">
     <!-- DataTables -->
-    <link rel="stylesheet" href="{{url('plugins/datatables/dataTables.bootstrap4.css')}}">
+    <link rel="stylesheet" href="{{url('plugins/datatables/dataTables.bootstrap.css')}}">
     <link rel="stylesheet" href="{{url('plugins/datatables/buttons.dataTables.min.css')}}">
     <!-- Date Picker -->
     <link rel="stylesheet" href="{{url('plugins/datepicker/datepicker3.css')}}">
@@ -30,8 +31,17 @@
             color: #fff;
             background-color: #dd4445 !important;
         }
-        body{font-size: 14px!important;}
-        .btn-group-sm>.btn, .btn-sm{font-size: 12px!important;}
+        body{font-size: 12px!important;}
+        /*.btn-group-sm>.btn, .btn-sm{font-size: 12px!important;}*/
+        .pagination{
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+        }
+        div.dt-buttons {
+            width: 82%;
+        }
+        .brand-link{font-size: 21px!important;}
     </style>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -256,8 +266,8 @@
 <!-- Sparkline -->
 <script src="{{url('plugins/sparkline/jquery.sparkline.min.js')}}"></script>
 <!-- DataTables -->
-<script src="{{url('plugins/datatables/jquery.dataTables.js')}}"></script>
-<script src="{{url('plugins/datatables/dataTables.bootstrap4.js')}}"></script>
+<script src="{{url('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{url('plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
 <!-- Jquery datatable tools js -->
 <script type="text/javascript" src="{{url('plugins/datatables/dataTables.buttons.min.js')}}"></script>
 <script type="text/javascript" src="{{url('plugins/datatables/jszip.min.js')}}"></script>
@@ -284,11 +294,11 @@
     $(function () {
         $("#example1, #example2").DataTable({
             dom: 'Bfrtip',
-            lengthMenu:
-                [
-                    [ 50, -1 ],
-                    [ '50 rows', 'Show all' ]
-                ],
+            // lengthMenu:
+            //     [
+            //         [ 50, -1 ],
+            //         [ '50 rows', 'Show all' ]
+            //     ],
             buttons: [
                 'pageLength',
                 'copyHtml5',
